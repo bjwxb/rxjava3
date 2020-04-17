@@ -2,6 +2,7 @@ package com.xinzhili.doctor.contract;
 
 import com.xinzhili.doctor.base.BaseContract;
 import com.xinzhili.doctor.bean.DoctorCroProjectBean;
+import com.xinzhili.doctor.bean.base.BaseResponse;
 import com.xinzhili.doctor.bean.success.SucDoctorCroProjectBean;
 import com.xinzhili.mvp.base.BasePresenter;
 import com.xinzhili.mvp.base.BaseView;
@@ -21,6 +22,6 @@ public class DoctorCroProjectContract {
     }
 
     public interface IView extends BaseContract.BaseView {
-        void showDoctorCroProjectList(List<SucDoctorCroProjectBean.DataBean.ProjectListBean> list);
+        void showDoctorCroProjectList(List<DoctorCroProjectBean.ProjectListBean> list);
     }
 }

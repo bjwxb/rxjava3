@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.xinzhili.doctor.App;
+import com.xinzhili.doctor.util.Dlog;
 import com.xinzhili.mvp.bean.base.BaseResponse;
 import com.xinzhili.mvp.common.Constant;
 
@@ -27,25 +28,35 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
     private BaseContract.BaseView mView;
     private Context mContext;
 
-    public BaseObserver(BaseContract.BaseView view) {
+    protected BaseObserver(BaseContract.BaseView view) {
         mView = view;
         this.mContext = App.getInstance().getAppContext();
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        mView.showLoadingView();
+    }
+
+    @Override
     public void onNext(@NonNull BaseResponse<T> tBaseResponse) {
         if (!TextUtils.equals(tBaseResponse.getStatus(), Constant.HttpCode.HTTP_STATUS_SUCCESS)) {
+            mView.showErrorView();
             onError(new Throwable(tBaseResponse.getResult()));
         } else {
             onSuccess(tBaseResponse.getData());
+            mView.showSuccessView();
         }
     }
 
     @Override
     public void onError(@NonNull Throwable e) {
+        Dlog.e("333333333333333333333333333333");
         String errorMsg = e.getMessage();
         if (e instanceof UnknownHostException) {
             errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_un_know_host_exception);
+            mView.showNoNetWorkView();
         } else if (e instanceof SocketTimeoutException) {
             errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_socket_time_out_exception);
         } else if (e instanceof HttpException) {
@@ -69,18 +80,17 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
 
     @Override
     public void onComplete() {
-
     }
 
     /**
      * 请求成功后在该方法中对数据进行处理
-     * @param data
+     * @param data bean
      */
     public abstract void onSuccess(T data);
 
     /**
      * 出错后可以在该方法中进行一些额外的操作
-     * @param message
+     * @param message message
      */
     public void onFailed(String message) {
 

@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.xinzhili.doctor.R;
 import com.xinzhili.doctor.base.BaseActivity;
 import com.xinzhili.doctor.base.BaseContract;
+import com.xinzhili.doctor.bean.DoctorCroProjectBean;
 import com.xinzhili.doctor.bean.success.SucDoctorCroProjectBean;
 import com.xinzhili.doctor.contract.DoctorCroProjectContract;
 import com.xinzhili.doctor.presenter.DoctorCroProjectPresenter;
@@ -55,7 +56,7 @@ public class DoctorCroProjectActivity extends BaseActivity implements DoctorCroP
     }
 
     @Override
-    public void showDoctorCroProjectList(List<SucDoctorCroProjectBean.DataBean.ProjectListBean> list) {
+    public void showDoctorCroProjectList(List<DoctorCroProjectBean.ProjectListBean> list) {
         Dlog.e(new Gson().toJson(list));
     }
 

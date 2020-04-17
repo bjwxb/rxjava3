@@ -10,18 +10,10 @@ import com.xinzhili.doctor.contract.DoctorCroProjectContract;
 import com.xinzhili.doctor.util.Dlog;
 import com.xinzhili.mvp.bean.base.BaseResponse;
 
-import java.util.Observable;
-
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
-import io.reactivex.rxjava3.core.Flowable;
-import io.reactivex.rxjava3.core.ObservableSource;
-import io.reactivex.rxjava3.disposables.CompositeDisposable;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.observers.DisposableObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import io.reactivex.rxjava3.subscribers.DisposableSubscriber;
 
 /**
  * 描述: DoctorCroProjectPresenter
@@ -37,22 +29,33 @@ public class DoctorCroProjectPresenter extends BaseRxPresenter<DoctorCroProjectC
         addSubscribe(mApiService.getDoctorCroList("8KKVP8")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableObserver<SucDoctorCroProjectBean>() {
+                .subscribeWith(new BaseObserver<DoctorCroProjectBean>(mView) {
                     @Override
-                    public void onNext(@NonNull SucDoctorCroProjectBean bean) {
-                        mView.showDoctorCroProjectList(bean.getData().getProjectList());
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        mView.showError(e);
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        mView.completed();
+                    public void onSuccess(DoctorCroProjectBean data) {
+                        mView.showDoctorCroProjectList(data.getProjectList());
                     }
                 }));
+
+    }
+
+    abstract class base<T> extends DisposableObserver<BaseResponse<T>>{
+
+        @Override
+        public void onNext(@NonNull BaseResponse<T> tBaseResponse) {
+
+        }
+
+        @Override
+        public void onError(@NonNull Throwable e) {
+
+        }
+
+        @Override
+        public void onComplete() {
+
+        }
+
+        public abstract void success();
     }
 
     private void parseData(SucDoctorCroProjectBean bean){
