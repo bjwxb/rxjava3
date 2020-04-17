@@ -1,0 +1,8 @@
+<resources>
+    <string name="http_un_know_host_exception">网络不可用</string>
+    <string name="http_socket_time_out_exception">请求网络超时</string>
+    <string name="http_server_error">服务器处理请求出错</string>
+    <string name="http_without_login">登陆失效</string>
+    <string name="http_login_over_time">登陆超时</string>
+    <string name="http_json_parse_error">数据解析错误</string>
+</resources>

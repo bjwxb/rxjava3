@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    //官方支持库
+    api rootProject.ext.dependencies["multidex"]
+
+    /**基于okhttp的网络框架*/
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["rxandroid"]
+//    api rootProject.ext.dependencies["rxbinding"]
+    api rootProject.ext.dependencies["rxpermissions"]
+    api 'com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0'
+    //日志的拦截器
+    api 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
+    //Google类库
+    api rootProject.ext.dependencies["zxing"]
+    api rootProject.ext.dependencies["gson"]
+    api rootProject.ext.dependencies["gson-convert"]
+
+    api rootProject.ext.dependencies["protobuf"]
+
+    //greendao
+    api rootProject.ext.dependencies["greendao"]
+    api 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v2.1.0'
+
+    //组件通信
+    api rootProject.ext.dependencies["eventbus"]
+    //图片框架
+    api rootProject.ext.dependencies["glide"]
+    //时间处理
+    api rootProject.ext.dependencies["joda-time"]
+    //JS交互
+    api rootProject.ext.dependencies["jsbridge"]
+
+    //一个强大的RecyclerAdapter框架
+    api rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
+    api rootProject.ext.dependencies["flow-layout"]
+    api rootProject.ext.dependencies["photoview"]
+    api(rootProject.ext.dependencies['StatusLayout']) {
+        exclude group: 'com.android.support'
+    }
+    api rootProject.ext.dependencies["DToast"]
+    api rootProject.ext.dependencies["SmartRefreshHeader"]
+    api rootProject.ext.dependencies["SmartRefreshLayout"]
+    api rootProject.ext.dependencies["jzvd"]
+    api rootProject.ext.dependencies["swipebacklayout"]
+}
