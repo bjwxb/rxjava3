@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/btn_2c2f32_trans_common_45" android:state_checked="false" />
+    <item android:drawable="@drawable/btn_ffac24_trans_common_45" android:state_checked="true" />
+</selector>

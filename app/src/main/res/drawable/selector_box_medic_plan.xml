@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_window_focused="false">
+        <shape android:shape="rectangle">
+            <!-- 圆角 -->
+            <corners android:radius="@dimen/dp_5"/>
+            <!--填充颜色为白色-->
+            <solid android:color="@color/c_e5e5e5" />
+            <!-- 描边 -->
+        </shape>
+    </item>
+
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <!--圆角-->
+            <corners android:radius="@dimen/dp_5"/>
+            <!--填充颜色为白色-->
+            <solid android:color="@color/c_e5e5e5" />
+            <!--描边-->
+        </shape>
+    </item>
+</selector>

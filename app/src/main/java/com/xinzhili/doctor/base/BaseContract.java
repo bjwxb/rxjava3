@@ -27,10 +27,6 @@ public class BaseContract {
 
         void showToast(String msg);
 
-        void showError(Throwable throwable);
-
         void onFailed(String message);
-
-        void completed();
     }
 }

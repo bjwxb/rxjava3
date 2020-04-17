@@ -32,26 +32,6 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @Override
-    public void showToast(String msg) {
-
-    }
-
-    @Override
-    public void showError(Throwable throwable) {
-
-    }
-
-    @Override
-    public void onFailed(String message) {
-
-    }
-
-    @Override
-    public void completed() {
-
-    }
-
     @OnClick(R.id.tv_test)
     public void onViewClicked() {
         DoctorCroProjectActivity.actionStart(this);

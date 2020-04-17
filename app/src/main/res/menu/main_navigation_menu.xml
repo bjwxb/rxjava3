@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_personal_info"
+        android:icon="@drawable/icon_menu_personal_info"
+        android:title="@string/tab_menu_personal_info" />
+    <item
+        android:id="@+id/item_personal_qr_code"
+        android:icon="@drawable/icon_menu_qr_code"
+        android:title="@string/tab_menu_personal_qr_code" />
+    <item
+        android:id="@+id/item_personal_consultation"
+        android:icon="@drawable/icon_menu_consultation"
+        android:title="@string/tab_menu_personal_consultation" />
+    <item
+        android:id="@+id/item_personal_price"
+        android:icon="@drawable/icon_menu_assistant"
+        android:title="@string/tab_menu_personal_price" />
+    <item
+        android:id="@+id/item_personal_assistant"
+        android:icon="@drawable/icon_menu_assistant"
+        android:title="@string/tab_menu_personal_assistant" />
+    <item
+        android:id="@+id/item_personal_inner_doctor"
+        android:icon="@drawable/icon_menu_doctor"
+        android:title="@string/tab_menu_personal_inner_doctor" />
+    <item
+        android:id="@+id/item_personal_outer_doctor"
+        android:icon="@drawable/icon_menu_doctor"
+        android:title="@string/tab_menu_personal_outer_doctor" />
+    <item
+        android:id="@+id/item_personal_setting"
+        android:icon="@drawable/icon_menu_setting"
+        android:title="@string/tab_menu_personal_setting" />
+</menu>

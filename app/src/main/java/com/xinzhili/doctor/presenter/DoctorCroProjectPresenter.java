@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.xinzhili.doctor.base.BaseObserver;
 import com.xinzhili.doctor.base.BaseRxPresenter;
 import com.xinzhili.doctor.bean.DoctorCroProjectBean;
-import com.xinzhili.doctor.bean.success.SucDoctorCroProjectBean;
 import com.xinzhili.doctor.contract.DoctorCroProjectContract;
 import com.xinzhili.doctor.util.Dlog;
 import com.xinzhili.mvp.bean.base.BaseResponse;
@@ -34,35 +33,12 @@ public class DoctorCroProjectPresenter extends BaseRxPresenter<DoctorCroProjectC
                     public void onSuccess(DoctorCroProjectBean data) {
                         mView.showDoctorCroProjectList(data.getProjectList());
                     }
+
+                    @Override
+                    public void onFailed(String message) {
+                        super.onFailed(message);
+                    }
                 }));
 
-    }
-
-    abstract class base<T> extends DisposableObserver<BaseResponse<T>>{
-
-        @Override
-        public void onNext(@NonNull BaseResponse<T> tBaseResponse) {
-
-        }
-
-        @Override
-        public void onError(@NonNull Throwable e) {
-
-        }
-
-        @Override
-        public void onComplete() {
-
-        }
-
-        public abstract void success();
-    }
-
-    private void parseData(SucDoctorCroProjectBean bean){
-        Dlog.e(new Gson().toJson(bean));
-//        if (bean.isSuccess()){
-//            Dlog.e(new Gson().toJson(bean.getData()));
-//            //mView.showDoctorCroProjectList(bean.getData().getProjectList());
-//        }
     }
 }

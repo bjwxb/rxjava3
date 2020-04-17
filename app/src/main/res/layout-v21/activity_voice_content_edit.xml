@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View style="@style/DividerSplit"/>
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:gravity="top"
+        android:textCursorDrawable="@null"
+        android:lineSpacingExtra="@dimen/dp_3"
+        android:textSize="@dimen/sp_17"
+        android:textColor="@color/c_181818"
+        android:padding="@dimen/dp_15"
+        android:minLines="5"
+        android:maxLines="10"/>
+</LinearLayout>

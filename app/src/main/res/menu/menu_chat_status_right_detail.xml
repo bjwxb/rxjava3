@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--showAsAction这个属性的值有：-->
+    <!--1、always：使菜单项一直显示在ToolBar上。-->
+    <!--2、ifRoom：如果有足够的空间，这个值会使菜单项显示在ToolBar上。-->
+    <!--3、never：使菜单项永远都不出现在ToolBar上,在…的子项中显示。-->
+    <!--4、withText：使菜单项和它的图标，菜单文本一起显示。-->
+    <item
+        android:id="@+id/action_more"
+        android:icon="@drawable/icon_adjust_operator"
+        android:title=""
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menu_write_medic"
+                android:icon="@drawable/icon_chat_write_remind"
+                android:title="@string/chat_write_medic_plan"
+                app:showAsAction="ifRoom" />
+
+            <item
+                android:id="@+id/menu_start_reminder"
+                android:icon="@drawable/icon_start_chat_remind"
+                android:title="@string/chat_start_notice"
+                app:showAsAction="ifRoom" />
+        </menu>
+    </item>
+
+</menu>

@@ -9,7 +9,6 @@ import com.xinzhili.doctor.R;
 import com.xinzhili.doctor.base.BaseActivity;
 import com.xinzhili.doctor.base.BaseContract;
 import com.xinzhili.doctor.bean.DoctorCroProjectBean;
-import com.xinzhili.doctor.bean.success.SucDoctorCroProjectBean;
 import com.xinzhili.doctor.contract.DoctorCroProjectContract;
 import com.xinzhili.doctor.presenter.DoctorCroProjectPresenter;
 import com.xinzhili.doctor.util.Dlog;
@@ -59,22 +58,4 @@ public class DoctorCroProjectActivity extends BaseActivity implements DoctorCroP
     public void showDoctorCroProjectList(List<DoctorCroProjectBean.ProjectListBean> list) {
         Dlog.e(new Gson().toJson(list));
     }
-
-
-    @Override
-    public void showError(Throwable throwable) {
-        throwable.printStackTrace();
-        Dlog.e("************ error ************");
-    }
-
-    @Override
-    public void onFailed(String message) {
-        showToast(message);
-    }
-
-    @Override
-    public void completed() {
-        Dlog.e("======================");
-    }
-
 }

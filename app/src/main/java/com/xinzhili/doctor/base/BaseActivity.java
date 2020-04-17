@@ -25,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseCon
     protected Unbinder mUnbinder;//注解
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (mUiLoader == null) {
             mUiLoader = new AbstractUiLoader(this) {
@@ -84,6 +84,11 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseCon
 
     protected BaseContract.BasePresenter<? extends BaseContract.BaseView> getPresenter() {
         return null;
+    }
+
+    @Override
+    public void onFailed(String message) {
+        //子activity需要时再实现处理
     }
 
     @Override
