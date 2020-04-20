@@ -37,6 +37,7 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
     protected void onStart() {
         super.onStart();
         mView.showLoadingView();
+        mView.showLoading();
     }
 
     @Override
@@ -52,7 +53,6 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
 
     @Override
     public void onError(@NonNull Throwable e) {
-        Dlog.e("333333333333333333333333333333");
         String errorMsg = e.getMessage();
         if (e instanceof UnknownHostException) {
             errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_un_know_host_exception);
@@ -73,13 +73,14 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
         } else if (e instanceof ParseException || e instanceof JSONException) {
             errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_json_parse_error);
         }
-        //mView.hideLoading();
+        mView.hideLoading();
         mView.showToast(errorMsg);
         onFailed(errorMsg);
     }
 
     @Override
     public void onComplete() {
+        mView.hideLoading();
     }
 
     /**

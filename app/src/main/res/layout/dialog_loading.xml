@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/transparent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shape_fill_white_rect_3"
+        android:gravity="center"
+        android:padding="@dimen/dp_20"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:indeterminateTint="@color/c_4285f5"
+            android:indeterminateTintMode="src_atop" />
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textSize="@dimen/sp_12"
+            android:textColor="@color/primary_gray_66"
+            android:text="@string/loading"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

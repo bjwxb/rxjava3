@@ -11,7 +11,7 @@ public class Constant {
 
     public static class URL{
         //login token
-        public static final String OAUTH_TOKEN= "v0//oauth/token";
+        public static final String OAUTH_TOKEN= "v0/oauth/token";
 
         //临床试验项目列表
         public static final String DOCTOR_CRO_PROJECT_LIST = "v0/doctor/clinical/project/doctor/{userId}";

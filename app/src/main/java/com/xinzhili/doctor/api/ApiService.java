@@ -1,6 +1,7 @@
 package com.xinzhili.doctor.api;
 
 import com.xinzhili.doctor.bean.DoctorCroProjectBean;
+import com.xinzhili.doctor.bean.LoginToken;
 import com.xinzhili.mvp.bean.base.BaseResponse;
 import com.xinzhili.mvp.common.Constant;
 
@@ -24,7 +25,7 @@ public interface ApiService {
     //获取授权token
     @FormUrlEncoded
     @POST(Constant.URL.OAUTH_TOKEN)
-    Observable<BaseResponse<DoctorCroProjectBean>> getToken(@FieldMap Map<String, String> map);
+    Observable<LoginToken> getToken(@FieldMap Map<String, String> map);
 
     //医生的临床试验项目列表
     @GET(Constant.URL.DOCTOR_CRO_PROJECT_LIST)

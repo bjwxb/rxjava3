@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.xinzhili.doctor.util.Dlog;
 import com.xinzhili.doctor.util.ToastUtils;
+import com.xinzhili.doctor.view.LoadingDialog;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseCon
 
     private AbstractUiLoader mUiLoader;
     protected Unbinder mUnbinder;//注解
+    private LoadingDialog mLoadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseCon
         initPresenter();
         bindPresenter();
 
+        initDialog();
         initViews();
         initData();
         initSwipeLayout();
@@ -69,6 +72,13 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseCon
     protected void setStatusBar() {
     }
 
+    private void initDialog(){
+        LoadingDialog.Builder builder=new LoadingDialog.Builder(this)
+                .setMessage("正在加载中")
+                .setShowMessage(true);
+        mLoadingDialog = builder.create();
+    }
+
     //注解初始化
     private void initButterknife() {
         mUnbinder = ButterKnife.bind(this);
@@ -89,6 +99,20 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseCon
     @Override
     public void onFailed(String message) {
         //子activity需要时再实现处理
+    }
+
+    @Override
+    public void showLoading() {
+        if (null != mLoadingDialog){
+            runOnUiThread(() -> mLoadingDialog.show());
+        }
+    }
+
+    @Override
+    public void hideLoading() {
+        if (null != mLoadingDialog){
+            runOnUiThread(() -> mLoadingDialog.dismiss());
+        }
     }
 
     @Override
@@ -118,6 +142,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseCon
 
     @Override
     public void showToast(String msg) {
+        Dlog.e(msg);
         ToastUtils.showCustom(getApplicationContext(), msg);
     }
 

@@ -13,6 +13,10 @@ import java.util.Map;
 public class LoginContract {
     public interface IView extends BaseContract.BaseView{
         void loginSuccess();
+
+        String getAccount();
+
+        String getPassword();
     }
 
     public interface IPresenter<T> extends BaseContract.BasePresenter<T>{

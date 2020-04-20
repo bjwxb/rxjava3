@@ -1,5 +1,6 @@
 package com.xinzhili.doctor.ui.login;
 
+import android.annotation.SuppressLint;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.jakewharton.rxbinding3.InitialValueObservable;
 import com.jakewharton.rxbinding3.widget.RxTextView;
+import com.xinzhili.doctor.BuildConfig;
 import com.xinzhili.doctor.R;
 import com.xinzhili.doctor.base.BaseActivity;
 import com.xinzhili.doctor.base.BaseContract;
@@ -16,6 +18,9 @@ import com.xinzhili.doctor.contract.LoginContract;
 import com.xinzhili.doctor.presenter.LoginPresenter;
 import com.xinzhili.doctor.util.Dlog;
 import com.xinzhili.doctor.view.ClearEditText;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -68,9 +73,15 @@ public class LoginActivity extends BaseActivity implements LoginContract.IView {
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void initViews() {
         initInputObserver();
+
+        if (BuildConfig.DEBUG){
+            etAccount.setText("18514748006");
+            etPassword.setText("111111");
+        }
     }
 
     //初始化用戶名、密码输入监听
@@ -133,6 +144,26 @@ public class LoginActivity extends BaseActivity implements LoginContract.IView {
         Dlog.e("-------------");
     }
 
+    @Override
+    public String getAccount() {
+        return etAccount.getText().toString().trim();
+    }
+
+    @Override
+    public String getPassword() {
+        return etPassword.getText().toString();
+    }
+
+    private void login(){
+        Map<String, String> map = new HashMap<>();
+        map.put("grant_type", "password");
+        map.put("device_token", "1111111111111111111");
+        map.put("username", getAccount());
+        map.put("password", getPassword());
+        map.put("device_type", "android");
+        mPresenter.doLogin(map);
+    }
+
     @OnClick({R.id.iv_show_hide_password, R.id.tv_forget_password, R.id.btn_login, R.id.tv_login_agreement})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -141,6 +172,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.IView {
             case R.id.tv_forget_password:
                 break;
             case R.id.btn_login:
+                login();
                 break;
             case R.id.tv_login_agreement:
                 break;

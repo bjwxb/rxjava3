@@ -15,6 +15,10 @@ public class BaseContract {
 
     public interface BaseView {
 
+        void showLoading();
+
+        void hideLoading();
+
         void showEmptyView();
 
         void showErrorView();
