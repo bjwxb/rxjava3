@@ -1,17 +1,12 @@
 package com.xinzhili.doctor.presenter;
 
 
-import com.google.gson.Gson;
 import com.xinzhili.doctor.base.BaseObserver;
 import com.xinzhili.doctor.base.BaseRxPresenter;
 import com.xinzhili.doctor.bean.DoctorCroProjectBean;
 import com.xinzhili.doctor.contract.DoctorCroProjectContract;
-import com.xinzhili.doctor.util.Dlog;
-import com.xinzhili.mvp.bean.base.BaseResponse;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.annotations.NonNull;
-import io.reactivex.rxjava3.observers.DisposableObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /**

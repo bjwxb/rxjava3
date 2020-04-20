@@ -2,6 +2,8 @@ package com.xinzhili.doctor.ui.login;
 
 import android.annotation.SuppressLint;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import com.jakewharton.rxbinding3.InitialValueObservable;
 import com.jakewharton.rxbinding3.widget.RxTextView;
 import com.xinzhili.doctor.BuildConfig;
+import com.xinzhili.doctor.MainActivity;
 import com.xinzhili.doctor.R;
 import com.xinzhili.doctor.base.BaseActivity;
 import com.xinzhili.doctor.base.BaseContract;
@@ -54,6 +57,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.IView {
     @BindView(R.id.ll_protocal_privacl)
     LinearLayout llProtocalPrivacl;
 
+    private boolean showPassword = false;
     private LoginPresenter mPresenter;
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
@@ -64,7 +68,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.IView {
 
     @Override
     public void initPresenter() {
-        mPresenter = new LoginPresenter();
+        mPresenter = new LoginPresenter(this);
     }
 
     @Override
@@ -141,7 +145,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.IView {
 
     @Override
     public void loginSuccess() {
-        Dlog.e("-------------");
+        MainActivity.actionStart(mContext);
+        finish();
     }
 
     @Override
@@ -168,6 +173,16 @@ public class LoginActivity extends BaseActivity implements LoginContract.IView {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_show_hide_password:
+                showPassword = !showPassword;
+                if (showPassword) {// 显示密码
+                    ivShowHidePassword.setImageResource(R.drawable.icon_login_show_password);
+                    etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    etPassword.setSelection(etPassword.getText().toString().length());
+                } else {// 隐藏密码
+                    ivShowHidePassword.setImageResource(R.drawable.icon_login_hide_password);
+                    etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    etPassword.setSelection(etPassword.getText().toString().length());
+                }
                 break;
             case R.id.tv_forget_password:
                 break;

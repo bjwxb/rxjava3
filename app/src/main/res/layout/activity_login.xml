@@ -79,7 +79,7 @@
                 android:layout_height="@dimen/dp_32"
                 android:padding="@dimen/dp_6"
                 android:layout_marginStart="@dimen/dp_8"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:contentDescription="@string/app_name"/>
 
         </LinearLayout>

@@ -1,19 +1,22 @@
 package com.xinzhili.doctor.presenter;
 
-import android.text.TextUtils;
+import android.content.Context;
 
 import com.google.gson.Gson;
+import com.xinzhili.doctor.base.BaseObserver;
 import com.xinzhili.doctor.base.BaseRxPresenter;
+import com.xinzhili.doctor.bean.DoctorBean;
 import com.xinzhili.doctor.bean.LoginToken;
+import com.xinzhili.doctor.bean.base.BaseResponse;
 import com.xinzhili.doctor.contract.LoginContract;
+import com.xinzhili.doctor.database.sp.UserInfoUtils;
 
 import java.util.Map;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.annotations.NonNull;
-import io.reactivex.rxjava3.observers.DisposableObserver;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import retrofit2.HttpException;
 
 /**
  * 描述:
@@ -24,37 +27,30 @@ import retrofit2.HttpException;
 public class LoginPresenter extends BaseRxPresenter<LoginContract.IView>
         implements LoginContract.IPresenter<LoginContract.IView>{
 
+    private Context mContext;
+    public LoginPresenter(Context context){
+        this.mContext = context;
+    }
+
     @Override
     public void doLogin(Map<String, String> map) {
-        mView.showLoading();
-        addSubscribe(mApiService.getToken(map).subscribeOn(Schedulers.io())
+        addSubscribe(mApiService.getToken(map)
+                .flatMap(new Function<LoginToken, Observable<BaseResponse<DoctorBean>>>() {
+                    @Override
+                    public Observable<BaseResponse<DoctorBean>> apply(LoginToken loginToken) throws Throwable {
+                        //保存token
+                        UserInfoUtils.saveTokenInfo(mContext, loginToken);
+                        return mApiService.getDoctorUser();
+                    }
+                })
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableObserver<LoginToken>() {
+                .subscribeWith(new BaseObserver<DoctorBean>(mView) {
                     @Override
-                    public void onNext(@NonNull LoginToken loginToken) {
-
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable t) {
-                        mView.hideLoading();
-                        if(t instanceof HttpException){
-                            HttpException httpException= (HttpException) t;
-                            try {
-                                String errorBody= httpException.response().errorBody().string();
-                                LoginToken loginToken = new Gson().fromJson(errorBody, LoginToken.class);
-                                if (!TextUtils.isEmpty(loginToken.getError_description())){
-                                    mView.showToast(loginToken.getError_description());
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                    public void onSuccess(DoctorBean data) {
+                        if (UserInfoUtils.setDoctorBean(mContext, new Gson().toJson(data))){
+                            mView.loginSuccess();
                         }
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        mView.hideLoading();
                     }
                 }));
     }

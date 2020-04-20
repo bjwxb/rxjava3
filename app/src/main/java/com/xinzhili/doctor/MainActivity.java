@@ -1,5 +1,7 @@
 package com.xinzhili.doctor;
 
+import android.content.Context;
+import android.content.Intent;
 import android.widget.Button;
 
 import com.xinzhili.doctor.base.BaseActivity;
@@ -12,6 +14,12 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.tv_test)
     Button tvTest;
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
+
 
     @Override
     public int getLayoutId() {

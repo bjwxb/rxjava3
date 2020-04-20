@@ -1,5 +1,6 @@
 package com.xinzhili.doctor.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,10 +26,12 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseCon
     private AbstractUiLoader mUiLoader;
     protected Unbinder mUnbinder;//注解
     private LoadingDialog mLoadingDialog;
+    public Context mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         if (mUiLoader == null) {
             mUiLoader = new AbstractUiLoader(this) {
                 @Override

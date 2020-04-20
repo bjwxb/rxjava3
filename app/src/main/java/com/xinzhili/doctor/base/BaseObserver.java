@@ -3,9 +3,10 @@ package com.xinzhili.doctor.base;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
 import com.xinzhili.doctor.App;
-import com.xinzhili.doctor.util.Dlog;
-import com.xinzhili.mvp.bean.base.BaseResponse;
+import com.xinzhili.doctor.bean.LoginToken;
+import com.xinzhili.doctor.bean.base.BaseResponse;
 import com.xinzhili.mvp.common.Constant;
 
 import org.json.JSONException;
@@ -36,7 +37,7 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
     @Override
     protected void onStart() {
         super.onStart();
-        mView.showLoadingView();
+        //mView.showLoadingView();
         mView.showLoading();
     }
 
@@ -69,6 +70,16 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
                 mView.showToast(errorMsg);
                 onFailed(errorMsg);
                 return;
+            } else if (httpException.code() == Constant.HttpCode.HTTP_CODE_LOGIN_TOKEN_FAILED) {
+                try {
+                    String errorBody= httpException.response().errorBody().string();
+                    LoginToken loginToken = new Gson().fromJson(errorBody, LoginToken.class);
+                    if (!TextUtils.isEmpty(loginToken.getError_description())){
+                        errorMsg = loginToken.getError_description();
+                    }
+                } catch (Exception ee) {
+                    ee.printStackTrace();
+                }
             }
         } else if (e instanceof ParseException || e instanceof JSONException) {
             errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_json_parse_error);
