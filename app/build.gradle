@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 
 android {
     compileSdkVersion 29
@@ -30,7 +31,32 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        disable 'InvalidPackage', 'MissingTranslation', 'CheckResult',
+                'GoogleAppIndexingWarning'
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/java-gen']
+            //main同级建立渠道文件夹，适配不同资源，如tst/res
+            res.srcDirs = ['src/main/res']
+            //适配不同assets源文件
+            assets.srcDirs = ['src/main/assets']
+        }
+    }
 }
+
+//(可选)配置数据库版本，生成的Dao包路径(无特殊要求除了schemaVersion，daoPackage和targetGenDir一般不用配置，使用默认的)
+greendao {
+    schemaVersion 1 //数据库版本号
+    daoPackage 'com.xinzhili.doctor.database.sqlite.greendao' //设置DaoMaster、DaoSession、Dao包名
+    targetGenDir 'src/main/java' //设置DaoMaster、DaoSession、Dao目录
+}
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

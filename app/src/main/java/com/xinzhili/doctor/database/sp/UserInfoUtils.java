@@ -6,8 +6,8 @@ import android.text.TextUtils;
 import android.util.Base64;
 
 import com.google.gson.Gson;
-import com.xinzhili.doctor.bean.DoctorBean;
 import com.xinzhili.doctor.bean.LoginToken;
+import com.xinzhili.doctor.database.sqlite.entity.DoctorBean;
 
 public class UserInfoUtils {
 

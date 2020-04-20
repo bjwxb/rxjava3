@@ -7,6 +7,7 @@ package com.xinzhili.mvp.common;
  * 日期: 2020/4/15 16:36
  */
 public class Constant {
+    public static final String DATABASE_NAME = "xzl_doctor_db";
     public static final String BASE_URL = "https://api.test.xzlcorp.com/v0/";
 
     public static class URL{

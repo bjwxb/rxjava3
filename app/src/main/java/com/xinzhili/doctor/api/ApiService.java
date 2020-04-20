@@ -1,9 +1,9 @@
 package com.xinzhili.doctor.api;
 
-import com.xinzhili.doctor.bean.DoctorBean;
 import com.xinzhili.doctor.bean.DoctorCroProjectBean;
 import com.xinzhili.doctor.bean.LoginToken;
 import com.xinzhili.doctor.bean.base.BaseResponse;
+import com.xinzhili.doctor.database.sqlite.entity.DoctorBean;
 import com.xinzhili.mvp.common.Constant;
 
 import java.util.Map;

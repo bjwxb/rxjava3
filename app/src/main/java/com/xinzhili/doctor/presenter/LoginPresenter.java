@@ -2,14 +2,14 @@ package com.xinzhili.doctor.presenter;
 
 import android.content.Context;
 
-import com.google.gson.Gson;
 import com.xinzhili.doctor.base.BaseObserver;
 import com.xinzhili.doctor.base.BaseRxPresenter;
-import com.xinzhili.doctor.bean.DoctorBean;
 import com.xinzhili.doctor.bean.LoginToken;
 import com.xinzhili.doctor.bean.base.BaseResponse;
 import com.xinzhili.doctor.contract.LoginContract;
 import com.xinzhili.doctor.database.sp.UserInfoUtils;
+import com.xinzhili.doctor.database.sqlite.entity.DoctorBean;
+import com.xinzhili.doctor.database.sqlite.utils.DoctorTableUtils;
 
 import java.util.Map;
 
@@ -48,9 +48,9 @@ public class LoginPresenter extends BaseRxPresenter<LoginContract.IView>
                 .subscribeWith(new BaseObserver<DoctorBean>(mView) {
                     @Override
                     public void onSuccess(DoctorBean data) {
-                        if (UserInfoUtils.setDoctorBean(mContext, new Gson().toJson(data))){
-                            mView.loginSuccess();
-                        }
+                        String userId = UserInfoUtils.getUserId(mContext);
+                        DoctorTableUtils.getInstance().addDoctorBean(userId, data);
+                        mView.loginSuccess();
                     }
                 }));
     }

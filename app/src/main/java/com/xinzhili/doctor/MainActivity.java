@@ -2,18 +2,17 @@ package com.xinzhili.doctor;
 
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Button;
 
 import com.xinzhili.doctor.base.BaseActivity;
-import com.xinzhili.doctor.ui.mine.DoctorCroProjectActivity;
+import com.xinzhili.doctor.bean.RelationshipBean;
+import com.xinzhili.doctor.database.sp.UserInfoUtils;
+import com.xinzhili.doctor.database.sqlite.utils.DoctorTableUtils;
 
-import butterknife.BindView;
-import butterknife.OnClick;
+import java.util.List;
+
 
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.tv_test)
-    Button tvTest;
 
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -37,12 +36,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
-    }
-
-    @OnClick(R.id.tv_test)
-    public void onViewClicked() {
-        DoctorCroProjectActivity.actionStart(this);
+        String userId = UserInfoUtils.getUserId(mContext);
+        List<RelationshipBean> list = DoctorTableUtils.getInstance().getRelationShipBeanByUserId(userId);
     }
 
 }

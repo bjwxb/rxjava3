@@ -34,6 +34,7 @@ ext{
             "StatusLayout":"com.github.chenpengfei88:StatusLayout:1.0",
             "wechat_share":"com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+",
 
+            "MagicIndicator": 'com.github.hackware1993:MagicIndicator:1.5.0',
             //==================云信 start====================
             "im-basesdk": 'com.netease.nimlib:basesdk:6.4.0',
             // 音视频和互动白板服务需要
