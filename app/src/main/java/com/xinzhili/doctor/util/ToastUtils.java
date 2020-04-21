@@ -22,7 +22,7 @@ public class ToastUtils {
     public static void showCustom(Context mContext, String msg) {
         if (mContext == null || msg == null) return;
         DToast.make(mContext)
-                .setView(View.inflate(mContext, R.layout.toast, null))
+                .setView(View.inflate(mContext.getApplicationContext(), R.layout.toast, null))
                 .setText(R.id.tv_content, msg)
                 .setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, AppUtil.dp2px(100))
                 .setDuration(DToast.DURATION_SHORT)

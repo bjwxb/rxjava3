@@ -32,8 +32,6 @@ public class IndexViewPager extends ViewPager {
         super.scrollTo(x, y);
     }
 
-
-
     @Override
     public boolean onTouchEvent(MotionEvent arg0) {
         if (isCanScroll) {

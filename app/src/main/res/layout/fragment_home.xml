@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dp_5"
+        android:paddingBottom="@dimen/dp_5"
+        android:gravity="center"
+        android:textSize="@dimen/sp_13"
+        android:textColor="@color/c_666666"
+        android:text="@string/home_doctor_info"
+        tools:text="张三丰医生，患者50人，问题800个"
+        android:visibility="gone"/>
+
+
+    <include layout="@layout/view_main_header" />
+
+    <!--医生角色列表-->
+    <net.lucode.hackware.magicindicator.MagicIndicator
+        android:id="@+id/magic_indicator_doctor_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginBottom="@dimen/dp_6"
+        android:background="@color/white" />
+
+    <com.xinzhili.doctor.view.IndexViewPager
+        android:id="@+id/vp_patient"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

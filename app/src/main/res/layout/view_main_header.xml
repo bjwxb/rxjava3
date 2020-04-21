@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/header_bar_height"
+    android:paddingEnd="@dimen/dp_8"
+    android:paddingStart="0dp"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <!--机构名称-->
+    <RelativeLayout
+        android:id="@+id/rl_organ_name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dp_15"
+        android:paddingEnd="@dimen/dp_15"
+        android:gravity="center_vertical"
+        android:background="?attr/selectableItemBackground"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_organ_name"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_50"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/sp_18"
+            tools:text="北京阜外医院" />
+
+        <ImageView
+            android:id="@+id/iv_organ_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tv_organ_name"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_organization_arrow_down"
+            android:contentDescription="@string/app_name"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_add"
+        android:layout_width="@dimen/dp_36"
+        android:layout_height="@dimen/dp_36"
+        android:background="?attr/selectableItemBackground"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/dp_8"
+        android:src="@drawable/ic_home_add" />
+</LinearLayout>

@@ -1,0 +1,370 @@
+<resources>
+
+    <attr name="textColor" format="color" />
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+
+
+    <attr name="autoScaleTextViewStyle"/>
+    <declare-styleable name="AutoFitTextView">
+        <attr name="minTextSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="SpinnerButton">
+        <attr name="str_text" format="reference|string" />
+    </declare-styleable>
+
+    <declare-styleable name="RulerView">
+        <!--尺子的方向-->
+        <attr name="rulerOrientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <!--选中时的高亮颜色-->
+        <attr name="rulerHighlightColor" format="color|reference" />
+        <!--未选中时的默认颜色-->
+        <attr name="rulerColor" format="color|reference" />
+        <!--尺子上文字的颜色-->
+        <attr name="rulerTextColor" format="color|reference" />
+        <!--相邻刻度间的距离-->
+        <attr name="rulerIntervalDistance" format="dimension" />
+        <!--刻度线的宽度-->
+        <attr name="rulerLineWidth" format="dimension" />
+        <!--刻度线的高度-->
+        <attr name="rulerLineHeight" format="dimension" />
+        <!--尺子上文字的大小-->
+        <attr name="rulerTextSize" format="dimension" />
+        <!--文字与最长刻度线的距离-->
+        <attr name="rulerTextBaseLineDistance" format="dimension" />
+        <!--是否以10格划分-->
+        <attr name="rulerIsDivideByTen" format="boolean" />
+        <!--10格的高度-->
+        <attr name="rulerDivideByTenHeight" format="dimension" />
+        <!--10格的宽度-->
+        <attr name="rulerDivideByTenWidth" format="dimension" />
+        <!--是否以5格划分-->
+        <attr name="rulerIsDivideByFive" format="boolean" />
+        <!--5格的高度-->
+        <attr name="rulerDivideByFiveHeight" format="dimension" />
+        <!--5格的宽度-->
+        <attr name="rulerDivideByFiveWidth" format="dimension" />
+        <!--指针的高度-->
+        <attr name="rulerCursorHeight" format="dimension" />
+        <!--指针的宽度-->
+        <attr name="rulerCursorWidth" format="dimension" />
+        <!--每格的差值-->
+        <attr name="rulerIntervalValue" format="float" />
+        <!--尺子的最大值-->
+        <attr name="rulerMaxValue" format="float" />
+        <!--尺子的最小值-->
+        <attr name="rulerMinValue" format="float" />
+        <!--尺子的初始选中值-->
+        <attr name="rulerDefaultValue" format="float" />
+        <!--保留小数的位数-->
+        <attr name="rulerRetainLength" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="LoopView">
+        <attr name="view_gravity">
+            <enum name="center" value="17" />
+            <enum name="left" value="3" />
+            <enum name="right" value="5" />
+        </attr>
+        <attr name="lineColor" format="color" />
+        <attr name="topBottomTextColor" format="color" />
+        <attr name="centerTextColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="canLoop" format="boolean" />
+        <attr name="initPosition" format="integer" />
+        <attr name="drawItemCount" format="integer" />
+        <attr name="lineSpacingMultiplier" format="float" />
+
+
+        <!--set number of item displayed, default is 3-->
+        <attr name="npv_ShowCount" format="reference|integer" />
+        <!--set if show divider, default is true-->
+        <attr name="npv_ShowDivider" format="reference|boolean" />
+        <attr name="npv_DividerColor" format="reference|color" />
+        <attr name="npv_DividerMarginLeft" format="reference|dimension" />
+        <attr name="npv_DividerMarginRight" format="reference|dimension" />
+        <attr name="npv_DividerHeight" format="reference|dimension" />
+        <attr name="npv_TextColorNormal" format="reference|color" />
+        <attr name="npv_TextColorSelected" format="reference|color" />
+        <attr name="npv_TextColorHint" format="reference|color" />
+        <attr name="npv_TextSizeNormal" format="reference|dimension" />
+        <attr name="npv_TextSizeSelected" format="reference|dimension" />
+        <attr name="npv_TextSizeHint" format="reference|dimension" />
+        <attr name="npv_TextArray" format="reference" />
+        <attr name="npv_MinValue" format="reference|integer" />
+        <attr name="npv_MaxValue" format="reference|integer" />
+        <attr name="npv_WrapSelectorWheel" format="reference|boolean" />
+        <attr name="npv_RespondChangeOnDetached" format="reference|boolean" />
+        <attr name="npv_HintText" format="reference|string" />
+        <attr name="npv_EmptyItemHint" format="reference|string" />
+        <attr name="npv_MarginStartOfHint" format="reference|dimension" />
+        <attr name="npv_MarginEndOfHint" format="reference|dimension" />
+        <attr name="npv_ItemPaddingHorizontal" format="reference|dimension" />
+        <attr name="npv_ItemPaddingVertical" format="reference|dimension" />
+        <attr name="npv_RespondChangeInMainThread" format="reference|boolean" />
+        <attr name="npv_TextEllipsize" format="reference|string" />
+
+        <!--just used to measure maxWidth for wrap_content without hint,
+            the string array will never be displayed.
+            you can set this attr if you want to keep the wraped numberpickerview
+            width unchanged when alter the content list-->
+        <attr name="npv_AlternativeTextArrayWithMeasureHint" format="reference" />
+        <attr name="npv_AlternativeTextArrayWithoutMeasureHint" format="reference" />
+        <!--the max length of hint content-->
+        <attr name="npv_AlternativeHint" format="reference|string" />
+    </declare-styleable>
+
+
+    <declare-styleable name="NineGridImageView">
+        <attr name="imgGap" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="MonthCalendarView">
+        <attr name="month_selected_text_color" format="color" />
+        <attr name="month_selected_circle_color" format="color" />
+        <attr name="month_selected_circle_today_color" format="color" />
+        <attr name="month_normal_text_color" format="color" />
+        <attr name="month_today_text_color" format="color" />
+        <attr name="month_lunar_text_color" format="color" />
+        <attr name="month_hint_circle_color" format="color" />
+        <attr name="month_holiday_color" format="color" />
+        <attr name="month_last_or_next_month_text_color" format="color" />
+        <attr name="month_day_text_size" format="integer" />
+        <attr name="month_day_lunar_text_size" format="integer" />
+        <attr name="month_show_task_hint" format="boolean" />
+        <attr name="month_show_lunar" format="boolean" />
+        <attr name="month_show_holiday_hint" format="boolean" />
+        <attr name="month_count" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="WeekCalendarView">
+        <attr name="week_selected_text_color" format="color" />
+        <attr name="week_selected_circle_color" format="color" />
+        <attr name="week_selected_circle_today_color" format="color" />
+        <attr name="week_normal_text_color" format="color" />
+        <attr name="week_today_text_color" format="color" />
+        <attr name="week_hint_circle_color" format="color" />
+        <attr name="week_holiday_color" format="color" />
+        <attr name="week_lunar_text_color" format="color" />
+        <attr name="week_day_text_size" format="integer" />
+        <attr name="week_day_lunar_text_size" format="integer" />
+        <attr name="week_show_task_hint" format="boolean" />
+        <attr name="week_show_lunar" format="boolean" />
+        <attr name="week_show_holiday_hint" format="boolean" />
+        <attr name="week_count" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="ScheduleLayout">
+        <attr name="default_view">
+            <enum name="month" value="0" />
+            <enum name="week" value="1" />
+        </attr>
+        <attr name="auto_change_month_row" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="WeekBarView">
+        <attr name="week_text_color" format="color" />
+        <attr name="week_text_size" format="integer" />
+    </declare-styleable>
+
+    <!-- 自定义验证码输入框-->
+    <declare-styleable name="VerificationCodeView">
+        <!--输入框的数量-->
+        <attr name="vcv_et_number" format="integer" />
+        <!--输入类型-->
+        <attr name="vcv_et_inputType">
+            <enum name="number" value="0" />
+            <enum name="numberPassword" value="1" />
+            <enum name="text" value="2" />
+            <enum name="textPassword" value="3" />
+        </attr>
+        <!--输入框的宽度-->
+        <attr name="vcv_et_width" format="dimension|reference" />
+        <!--输入框的高度-->
+        <attr name="vcv_et_height" format="dimension|reference" />
+        <!--输入框文字颜色-->
+        <attr name="vcv_et_text_color" format="color|reference" />
+        <!--输入框文字大小-->
+        <attr name="vcv_et_text_size" format="dimension" />
+        <!--输入框背景-->
+        <attr name="vcv_et_bg" format="reference" />
+        <!--光标样式-->
+        <attr name="vcv_et_cursor" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomInfoView">
+        <!--标题的文字-->
+        <attr name="text" format="string" />
+        <!--标题的字体大小-->
+        <attr name="text_size" format="dimension" />
+        <!--标题的字体颜色-->
+        <attr name="text_color" format="color" />
+        <!--输入框的内容-->
+        <attr name="edt_content" format="string" />
+        <!--输入框的字体大小-->
+        <attr name="edt_text_size" format="dimension" />
+        <!--输入框的字体颜色-->
+        <attr name="edt_text_color" format="color" />
+        <!--输入框提示的内容-->
+        <attr name="edt_hint_content" format="string" />
+        <!--输入框的提示字体的字体颜色-->
+        <attr name="edt_hint_text_color" format="color" />
+        <!--输入框是否可以编辑内容-->
+        <attr name="isEditable" format="boolean"/>
+        <!--是否必须选项-->
+        <attr name="must_visible" format="boolean"/>
+        <attr name="line_visible" format="boolean"/>
+
+
+        <!--item布局的内边距-->
+        <attr name="paddingLeft" format="dimension"/>
+        <attr name="paddingRight" format="dimension"/>
+        <attr name="paddingTop" format="dimension"/>
+        <attr name="paddingBottom" format="dimension"/>
+
+        <attr name="drawable_left" format="reference" />
+        <attr name="drawable_right" format="reference" />
+        <attr name="line_color" format="color" />
+        <attr name="line_height" format="integer" />
+        <attr name="hint_focusable" format="boolean"/>
+    </declare-styleable>
+
+    <!--自定义圆点-->
+    <declare-styleable name="PointView">
+        <attr name="radio" format="dimension"/>
+        <attr name="pointColor" format="color"/>
+    </declare-styleable>
+
+    <!--自定义RecyclerView高度-->
+    <declare-styleable name="MaxHeightRecyclerView">
+        <attr name="maxHeight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ViewfinderView">
+        <attr name="bottomText" format="reference|string" />
+        <attr name="topOffset" format="reference|dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="DoubleHeadedDragonBar">
+        <!--进度条按钮宽高-->
+        <attr name="button_width" format="dimension" />
+        <attr name="button_height" format="dimension" />
+        <!--进图条按钮图片-->
+        <attr name="button_img" format="reference"/>
+        <!--单位字体颜色-->
+        <attr name="text_view_color" format="color"/>
+        <!--进图条背景颜色-->
+        <attr name="bg_color" format="color"/>
+        <!--进度条颜色-->
+        <attr name="value_color" format="color"/>
+        <!--进度条宽-->
+        <attr name="seek_height" format="dimension"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="MedicTimeLineView">
+        <!--柱状图高度-->
+        <attr name="timeLine_chartHeight" format="dimension" />
+        <!--虚线宽度-->
+        <attr name="timeLine_lineWidth" format="dimension" />
+        <!--柱状图正常颜色-->
+        <attr name="timeLine_chartNormalColor" format="color" />
+        <!--柱状图部分异常颜色-->
+        <attr name="timeLine_chartPartAbnormalColor" format="color" />
+        <!--柱状图全部异常颜色-->
+        <attr name="timeLine_chartAbnormalColor" format="color" />
+        <!--文字颜色-->
+        <attr name="timeLine_textColor" format="color" />
+        <!--文字大小-->
+        <attr name="timeLine_textSize" format="dimension" />
+        <!--圆颜色-->
+        <attr name="timeLine_circleolor" format="color" />
+        <!--圆大小-->
+        <attr name="timeLine_circlesize" format="color" />
+
+    </declare-styleable>
+
+    <!--自定义switcher-->
+    <declare-styleable name="SwitchButton">
+        <attr name="sb_shadow_radius" format="reference|dimension"/>
+        <attr name="sb_shadow_offset" format="reference|dimension"/>
+        <attr name="sb_shadow_color" format="reference|color"/>
+        <attr name="sb_uncheck_color" format="reference|color"/>
+        <attr name="sb_checked_color" format="reference|color"/>
+
+        <attr name="sb_border_width" format="reference|dimension"/>
+        <attr name="sb_checkline_color" format="reference|color"/>
+        <attr name="sb_checkline_width" format="reference|dimension"/>
+        <attr name="sb_uncheckcircle_color" format="reference|color"/>
+        <attr name="sb_uncheckcircle_width" format="reference|dimension"/>
+        <attr name="sb_uncheckcircle_radius" format="reference|dimension"/>
+
+        <attr name="sb_checked" format="reference|boolean"/>
+        <attr name="sb_shadow_effect" format="reference|boolean"/>
+        <attr name="sb_effect_duration" format="reference|integer"/>
+        <attr name="sb_button_color" format="reference|color"/>
+        <attr name="sb_show_indicator" format="reference|boolean"/>
+        <attr name="sb_background" format="reference|color"/>
+        <attr name="sb_enable_effect" format="reference|boolean"/>
+    </declare-styleable>
+
+    <!-- _可折叠textview-->
+    <declare-styleable name="ExpandableTextView">
+        <attr name="maxCollapsedLines" format="integer"/>
+        <attr name="animDuration" format="integer"/>
+        <attr name="animAlphaStart" format="float"/>
+        <attr name="expandIndicator" format="reference"/>
+        <attr name="collapseIndicator" format="reference"/>
+        <attr name="expandToggleType" format="enum">
+            <enum name="ImageButton" value="0"/>
+            <enum name="TextView" value="1"/>
+        </attr>
+        <attr name="expandableTextId" format="reference"/>
+        <attr name="expandCollapseToggleId" format="reference"/>
+        <attr name="expandToggleOnTextClick" format="boolean"/>
+    </declare-styleable>
+
+    <!-- 垂直方向的虚线 -->
+    <declare-styleable name="DividerView">
+        <!-- 虚线颜色 -->
+        <attr name="divider_line_color" format="color"/>
+        <!-- 虚线宽度 -->
+        <attr name="dashThickness" format="dimension"/>
+        <!-- 虚线dash宽度 -->
+        <attr name="dashLength" format="dimension"/>
+        <!-- 虚线dash间隔 -->
+        <attr name="dashGap" format="dimension"/>
+        <!-- 虚线朝向 -->
+        <attr name="divider_orientation" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <!-- 数字进度条参数：用于版本更新中 -->
+    <declare-styleable name="NumberProgressBar">
+        <attr name="progress_current" format="integer" />
+        <attr name="progress_max" format="integer" />
+        <attr name="progress_unreached_color" format="color" />
+        <attr name="progress_reached_color" format="color" />
+        <attr name="progress_reached_bar_height" format="dimension" />
+        <attr name="progress_unreached_bar_height" format="dimension" />
+        <attr name="progress_text_size" format="dimension" />
+        <attr name="progress_text_color" format="color" />
+        <attr name="progress_text_offset" format="dimension" />
+        <attr name="progress_text_visibility" format="enum">
+            <enum name="visible" value="0" />
+            <enum name="invisible" value="1" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="Themes">
+        <attr name="numberProgressBarStyle" format="reference" />
+    </declare-styleable>
+</resources>

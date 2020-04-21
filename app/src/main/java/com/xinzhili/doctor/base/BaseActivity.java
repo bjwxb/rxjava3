@@ -21,7 +21,7 @@ import butterknife.Unbinder;
  * 邮箱: wuxiaobo@xinzhili.cn
  * 日期: 2020/4/15 17:27
  */
-public abstract class BaseActivity extends AppCompatActivity implements  BaseContract.BaseView{
+public abstract class BaseActivity extends AppCompatActivity implements BaseContract.BaseView{
 
     private AbstractUiLoader mUiLoader;
     protected Unbinder mUnbinder;//注解
@@ -145,7 +145,6 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseCon
 
     @Override
     public void showToast(String msg) {
-        Dlog.e(msg);
         ToastUtils.showCustom(getApplicationContext(), msg);
     }
 

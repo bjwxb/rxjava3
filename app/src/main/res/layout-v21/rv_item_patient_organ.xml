@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingStart="@dimen/dp_15"
+    android:paddingTop="@dimen/dp_15"
+    android:paddingEnd="@dimen/dp_12">
+
+    <ImageView
+        android:id="@+id/iv_more_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/dp_3"
+        android:layout_alignParentEnd="true"
+        android:background="?attr/selectableItemBackground"
+        android:src="@drawable/ic_patient_item_more" />
+
+
+    <ImageView
+        android:id="@+id/iv_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/app_name"
+        android:paddingStart="0dp"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_6"
+        android:paddingBottom="@dimen/dp_8"
+        android:src="@drawable/ic_selected_normal"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:id="@+id/rl_avatar_info"
+        android:layout_width="@dimen/dp_45"
+        android:layout_height="@dimen/dp_45"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_toEndOf="@+id/iv_selected">
+
+        <com.xinzhili.doctor.view.CircleImageView
+            android:id="@+id/civ_patient_avatar"
+            android:layout_width="@dimen/dp_45"
+            android:layout_height="@dimen/dp_45"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/icon_default_user_photo" />
+
+        <ImageView
+            android:id="@+id/iv_patient_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_open_notice" />
+
+        <TextView
+            android:id="@+id/tv_total_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/dp_16"
+            android:minHeight="@dimen/dp_16"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            tools:text="6"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_10"
+            android:background="@drawable/bg_rv_item_count_circle" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/rl_avatar_info"
+        android:layout_toEndOf="@+id/rl_avatar_info"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="@dimen/dp_72"
+            android:textColor="@color/c_181818"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textSize="@dimen/sp_16"
+            tools:text="张三张三" />
+
+        <TextView
+            android:id="@+id/iv_patient_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_6"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:textColor="@color/c_181818"
+            android:textSize="@dimen/sp_12"
+            tools:text="普通" />
+
+        <LinearLayout
+            android:id="@+id/ll_sex_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_item_patient_info"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dp_3"
+            android:paddingEnd="0dp"
+            android:layout_marginEnd="@dimen/dp_6">
+
+            <TextView
+                android:id="@+id/tv_patient_sex"
+                style="@style/RvPatientTextSubStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_6"
+                tools:text="男" />
+
+
+            <TextView
+                android:id="@+id/tv_patient_age"
+                style="@style/RvPatientTextSubStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_6"
+                tools:text="65" />
+
+            <TextView
+                android:id="@+id/tv_patient_address"
+                style="@style/RvPatientTextSubStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_6"
+                tools:text="京" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_expire_time"
+            style="@style/RvPatientTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/c_181818"
+            android:background="@drawable/bg_patient_free"
+            android:includeFontPadding="false"
+            android:textSize="@dimen/sp_12"
+            android:maxLines="1"
+            android:paddingTop="@dimen/dp_3"
+            android:paddingBottom="@dimen/dp_3"
+            android:paddingStart="@dimen/dp_3"
+            android:paddingEnd="@dimen/dp_3"
+            tools:text="试用15天" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_1"
+            android:layout_weight="1" />
+
+     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/rl_avatar_info"
+        android:layout_below="@id/ll_top"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tv_assistant"
+            style="@style/RvPatientOrganTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingStart="@dimen/dp_2"
+            android:paddingTop="@dimen/dp_1"
+            android:paddingEnd="@dimen/dp_2"
+            android:paddingBottom="@dimen/dp_1"
+            android:layout_marginEnd="@dimen/dp_12"
+            tools:text="助: 小王" />
+
+        <TextView
+            android:id="@+id/tv_organ_name"
+            style="@style/RvPatientOrganTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="多层测试机构多层测试机构" />
+
+        <LinearLayout
+            android:id="@+id/ll_illness_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_item_patient_info"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dp_3"
+            android:paddingEnd="0dp"
+            android:layout_marginStart="@dimen/dp_6"
+            android:layout_marginTop="@dimen/dp_2"
+            android:layout_marginBottom="@dimen/dp_2"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_sugar"
+                style="@style/RvPatientTextSubStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_6"
+                android:text="糖"
+                tools:text="糖" />
+
+            <TextView
+                android:id="@+id/tv_pressure"
+                style="@style/RvPatientTextSubStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_6"
+                android:text="压"
+                tools:text="压" />
+
+            <TextView
+                android:id="@+id/tv_urine"
+                style="@style/RvPatientTextSubStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_6"
+                android:text="尿"
+                tools:text="尿" />
+
+            <TextView
+                android:id="@+id/tv_fat"
+                style="@style/RvPatientTextSubStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_6"
+                android:text="脂"
+                tools:text="脂" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_bottom"
+        android:layout_alignStart="@+id/ll_bottom"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.xinzhili.doctor.view.PointView
+            android:id="@+id/point_consultation"
+            android:layout_width="@dimen/dp_4"
+            android:layout_height="@dimen/dp_4"
+            app:pointColor="@color/health_state_normal"
+            android:visibility="gone"
+            app:radio="@dimen/dp_2" />
+
+        <TextView
+            android:id="@+id/tv_consultation"
+            style="@style/RvPatientTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/dp_3"
+            tools:text="会诊(6)" />
+
+        <View
+            style="@style/Divider_ver"
+            android:layout_height="@dimen/dp_13"
+            android:layout_marginLeft="@dimen/divider_margin"
+            android:layout_marginRight="@dimen/divider_margin"
+            android:visibility="gone"/>
+
+        <com.xinzhili.doctor.view.PointView
+            android:id="@+id/point_message"
+            android:layout_width="@dimen/dp_4"
+            android:layout_height="@dimen/dp_4"
+            app:pointColor="@color/health_state_dangerous"
+            app:radio="@dimen/dp_2" />
+
+        <TextView
+            style="@style/RvPatientTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_3"
+            android:text="@string/rv_message_count_tip" />
+
+        <TextView
+            android:id="@+id/tv_message"
+            style="@style/RvPatientNumTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_3"
+            tools:text="(88)" />
+
+        <View
+            style="@style/Divider_ver"
+            android:layout_height="@dimen/dp_13"
+            android:layout_marginLeft="@dimen/divider_margin"
+            android:layout_marginRight="@dimen/divider_margin" />
+
+        <com.xinzhili.doctor.view.PointView
+            android:id="@+id/point_problem"
+            android:layout_width="@dimen/dp_4"
+            android:layout_height="@dimen/dp_4"
+            app:pointColor="@color/health_state_high"
+            app:radio="@dimen/dp_2" />
+
+        <TextView
+            style="@style/RvPatientTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_3"
+            android:text="@string/rv_problem_count_tip" />
+        <TextView
+            android:id="@+id/tv_problem"
+            style="@style/RvPatientNumTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_3"
+            tools:text="(12)" />
+
+        <View
+            style="@style/Divider_ver"
+            android:layout_height="@dimen/dp_13"
+            android:layout_marginLeft="@dimen/divider_margin"
+            android:layout_marginRight="@dimen/divider_margin" />
+
+        <com.xinzhili.doctor.view.PointView
+            android:id="@+id/point_quota"
+            android:layout_width="@dimen/dp_4"
+            android:layout_height="@dimen/dp_4"
+            app:pointColor="@color/health_state_normal"
+            app:radio="@dimen/dp_2" />
+
+        <TextView
+            style="@style/RvPatientTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_3"
+            android:text="@string/rv_metrics_count_tip"/>
+
+        <TextView
+            android:id="@+id/tv_quota"
+            style="@style/RvPatientNumTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_3"
+            android:text="@string/rv_metrics_count"
+            tools:text="(1)" />
+
+        <View
+            style="@style/Divider_ver"
+            android:layout_height="@dimen/dp_13"
+            android:layout_marginLeft="@dimen/divider_margin"
+            android:layout_marginRight="@dimen/divider_margin" />
+
+        <com.xinzhili.doctor.view.PointView
+            android:id="@+id/point_medic"
+            android:layout_width="@dimen/dp_4"
+            android:layout_height="@dimen/dp_4"
+            app:pointColor="@color/health_state_normal"
+            app:radio="@dimen/dp_2" />
+
+        <TextView
+            style="@style/RvPatientTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_3"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@string/rv_advice_count_tip"
+            tools:text="用药" />
+
+        <TextView
+            android:id="@+id/tv_medic"
+            style="@style/RvPatientNumTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_3"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@string/rv_advice_count"
+            tools:text="(1)" />
+    </LinearLayout>
+
+    <View
+        style="@style/Divider_hor"
+        android:layout_below="@+id/ll_other" />
+</RelativeLayout>

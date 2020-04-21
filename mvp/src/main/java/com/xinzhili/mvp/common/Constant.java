@@ -15,7 +15,9 @@ public class Constant {
         public static final String OAUTH_TOKEN= "oauth/token";
         //获取医生信息
         public static final String DOCTOR_USER = "doctor/user";
-
+        public static final String DOCTOR_USER2 = "doctor/userdfaa";
+        //获取患者列表
+        public static final String DOCTOR_PATIENT_LIST = "doctor/user/patient";
         //临床试验项目列表
         public static final String DOCTOR_CRO_PROJECT_LIST = "doctor/clinical/project/doctor/{userId}";
     }
@@ -25,6 +27,7 @@ public class Constant {
          * 请求成功
          */
         public static final String HTTP_STATUS_SUCCESS = "success";
+        public static final String HTTP_STATUS_FAIL = "fail";
         /**
          * 登录失败
          */

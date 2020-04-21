@@ -2,6 +2,7 @@ package com.xinzhili.doctor.api;
 
 import com.xinzhili.doctor.bean.DoctorCroProjectBean;
 import com.xinzhili.doctor.bean.LoginToken;
+import com.xinzhili.doctor.bean.PatientInfoBean;
 import com.xinzhili.doctor.bean.base.BaseResponse;
 import com.xinzhili.doctor.database.sqlite.entity.DoctorBean;
 import com.xinzhili.mvp.common.Constant;
@@ -14,6 +15,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 
 /**
  * 描述: ApiService
@@ -28,8 +30,13 @@ public interface ApiService {
     @POST(Constant.URL.OAUTH_TOKEN)
     Observable<LoginToken> getToken(@FieldMap Map<String, String> map);
 
+    //登录后获取医生相关信息
     @GET(Constant.URL.DOCTOR_USER)
     Observable<BaseResponse<DoctorBean>> getDoctorUser();
+
+    //获取患者列表
+    @GET(Constant.URL.DOCTOR_PATIENT_LIST)
+    Observable<BaseResponse<PatientInfoBean>> getPatientList(@QueryMap Map<String, String> map);
 
     //医生的临床试验项目列表
     @GET(Constant.URL.DOCTOR_CRO_PROJECT_LIST)
