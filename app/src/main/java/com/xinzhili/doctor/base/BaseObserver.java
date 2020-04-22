@@ -49,6 +49,7 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
             mView.showSuccessView();
         } else if (TextUtils.equals(tBaseResponse.getStatus(), Constant.HttpCode.HTTP_STATUS_FAIL)){
             mView.showErrorView();
+            Dlog.e(new Gson().toJson(tBaseResponse));
             FailedResponse response = new Gson().fromJson(new Gson().toJson(tBaseResponse), FailedResponse.class);
             if (null != response && null != response.getData()){
                 String msg = response.getData().getResult();
@@ -79,13 +80,6 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
                 LoginToken loginToken = new Gson().fromJson(errorBody, LoginToken.class);
                 if (!TextUtils.isEmpty(loginToken.getError_description())){
                     errorMsg = loginToken.getError_description();
-                } else {
-                    FailedResponse response = new Gson().fromJson(errorBody, FailedResponse.class);
-                    if (null != response && null != response.getData()){
-                        if (!TextUtils.isEmpty(response.getData().getResult())){
-                            errorMsg = response.getData().getResult();
-                        }
-                    }
                 }
             } catch (Exception ee) {
                 ee.printStackTrace();

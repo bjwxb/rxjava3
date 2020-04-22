@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,13 +19,17 @@ import com.xinzhili.doctor.bean.RelationshipBean;
 import com.xinzhili.doctor.database.sp.UserInfoUtils;
 import com.xinzhili.doctor.database.sqlite.entity.DoctorBean;
 import com.xinzhili.doctor.database.sqlite.utils.DoctorTableUtils;
+import com.xinzhili.doctor.event.OrganChangeEvent;
 import com.xinzhili.doctor.ui.home.adapter.OrganizationListAdapter;
 import com.xinzhili.doctor.ui.home.adapter.VpPatientListFragAdapter;
 import com.xinzhili.doctor.util.AppUtil;
 import com.xinzhili.doctor.util.Dlog;
 import com.xinzhili.doctor.util.RotateUtils;
+import com.xinzhili.doctor.util.SingletonUtil;
 import com.xinzhili.doctor.util.StringUtils;
 import com.xinzhili.doctor.view.IndexViewPager;
+import com.xinzhili.mvp.common.AppConstant;
+import com.xinzhili.mvp.common.Config;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
@@ -33,6 +38,8 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerInd
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -126,10 +133,10 @@ public class HomeFragment extends BaseLazyFragment {
         mOldTitleList.add(getString(R.string.tab_doctor_lower_level));
         mOldTitleList.add(getString(R.string.tab_doctor_adviser_level));
         mTitleList.addAll(mOldTitleList);
-        mNoAssistantDoctorFragment = PatientListFragment.newInstance();
-        mHigherLevelDoctorFragment = PatientListFragment.newInstance();
-        mLowerLevelDoctorFragment = PatientListFragment.newInstance();
-        mAdviserLevelDoctorFragment = PatientListFragment.newInstance();
+        mNoAssistantDoctorFragment = PatientListFragment.newInstanceNoHasAssistant(AppConstant.TYPE_USER_ROLE_DOCTOR);
+        mHigherLevelDoctorFragment = PatientListFragment.newInstance(AppConstant.TYPE_USER_ROLE_DOCTOR);
+        mLowerLevelDoctorFragment = PatientListFragment.newInstance(AppConstant.TYPE_USER_ROLE_ASSISTANT);
+        mAdviserLevelDoctorFragment = PatientListFragment.newInstance(AppConstant.TYPE_USER_ROLE_ADVISER_DOCTOR);
         mFragmentList.add(mNoAssistantDoctorFragment);
         mFragmentList.add(mHigherLevelDoctorFragment);
         mFragmentList.add(mLowerLevelDoctorFragment);
@@ -231,14 +238,14 @@ public class HomeFragment extends BaseLazyFragment {
             return;
         }
         Observable.fromIterable(relationshipBeanList)
-//                .filter(bean -> {//机构去重//不显示专家会诊池
-//                    if (TextUtils.equals(bean.getStatus(), Config.ORGAN_STATUS_CONFIRM) &&
-//                            (!TextUtils.equals(bean.getOrganizationName(), Config.DOCTOR_CONSULTATION_POOL))){
-//                        mOrgIdList.add(bean.getOrganizationId());
-//                        return true;
-//                    }
-//                    return false;
-//                })
+                .filter(bean -> {//机构去重//不显示专家会诊池
+                    if (TextUtils.equals(bean.getStatus(), Config.ORGAN_STATUS_CONFIRM) &&
+                            (!TextUtils.equals(bean.getOrganizationName(), Config.DOCTOR_CONSULTATION_POOL))){
+                        mOrgIdList.add(bean.getOrganizationId());
+                        return true;
+                    }
+                    return false;
+                })
                 .toList()
                 .filter(l -> l.size() > 0)
                 .subscribe(orgList -> {
@@ -249,10 +256,7 @@ public class HomeFragment extends BaseLazyFragment {
                         bean.setOrganizationName(getString(R.string.all_organ));
                         list.addFirst(bean);
                     }
-                    tvOrganName.setText(list.get(0).getOrganizationName());
-//                    isLoadByOrganChange = true;
-                    mRelationshipBean = list.get(0);
-
+                    refreshOrganInfo(list.get(0));
                     OrganizationListAdapter adapter = new OrganizationListAdapter(list);
                     rvOrganization.setAdapter(adapter);
                     adapter.setOnItemChildClickListener((adapter1, view, position) -> {
@@ -260,6 +264,7 @@ public class HomeFragment extends BaseLazyFragment {
                         mRelationshipBean = list.get(position);
                         refreshOrganInfo(list.get(position));
                         mPopupWindow.dismiss();
+                        EventBus.getDefault().post(new OrganChangeEvent(mRelationshipBean));
                     });
 
                 });
@@ -274,6 +279,7 @@ public class HomeFragment extends BaseLazyFragment {
      */
     private void refreshOrganInfo(RelationshipBean bean) {
         mRelationshipBean = bean;
+        SingletonUtil.getInstance().putRelationshipBean(bean);
         tvOrganName.setText(bean.getOrganizationName());
     }
 

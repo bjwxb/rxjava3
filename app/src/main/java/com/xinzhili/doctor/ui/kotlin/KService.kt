@@ -14,6 +14,6 @@ import retrofit2.http.GET
  */
 interface KService{
     //登录后获取医生相关信息
-    @GET(Constant.URL.DOCTOR_USER2)
+    @GET(Constant.URL.DOCTOR_USER)
     fun getDoctorUser2(): Call<BaseResponse<DoctorBean>>
 }

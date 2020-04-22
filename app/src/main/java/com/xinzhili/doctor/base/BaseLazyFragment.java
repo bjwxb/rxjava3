@@ -36,7 +36,7 @@ public abstract class BaseLazyFragment extends BaseFragment{
     /**
      * 视图可见
      * */
-    private void onVisible(){
+    public void onVisible(){
     }
 
     /**

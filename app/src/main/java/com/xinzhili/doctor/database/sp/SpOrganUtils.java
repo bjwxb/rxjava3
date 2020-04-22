@@ -4,12 +4,17 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.xinzhili.doctor.bean.RelationshipBean;
+import com.xinzhili.mvp.common.AppConstant;
+
 /**
  * 机构信息存储
  */
 public class SpOrganUtils {
     private static final String spOrganName = "organizationInfo";
     private static final String ORGANIZATION_ID = "organization_id";//机构id
+    private static final String DEPARTMENT_ID = "departmentId";//医生所在科室id
     private static final String ORGANIZATION_INFO = "organization_info";//机构信息
     private static final String ORGANIZATION_DEP_CATEGORY = "depCategory";//医生所在科室
     private static final String PATIENT_NOT_BINDING = "not_binding";//是否我的预约患者
@@ -22,6 +27,8 @@ public class SpOrganUtils {
     private static final String PATIENT_MEDIC_NUM = "patient_medic_num";//患者调药数
     private static final String BRACKET_INFO = "bracket_info";//支架型号信息
     private static final String DISABLED_IM_FUNCTION = "DISABLED_IM_FUNCTION";//禁用im聊天功能
+
+    private static final String DOCTOR_USER_TYPE = "DOCTOR_USER_TYPE";//医生角色
 
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
@@ -53,35 +60,32 @@ public class SpOrganUtils {
         return sp.getBoolean(IS_SEND_GROUP_MESSAGE, false);
     }
 
-    //存储机构id
-    public void setOrganizationId(String organId) {
-        editor.putString(ORGANIZATION_ID, organId);
-        editor.apply();
-    }
-
     //获取机构id
     public String getOrganizationId() {
         return sp.getString(ORGANIZATION_ID, "");
     }
 
-    //存储机构id
-    public void setOrganizationDepCategory(String category) {
-        editor.putString(ORGANIZATION_DEP_CATEGORY, category);
-        editor.apply();
-    }
 
-    //获取机构id
+    //获取科室id
     public String getOrganizationDepCategory() {
         return sp.getString(ORGANIZATION_DEP_CATEGORY, "");
     }
 
+    //获取科室id
+    public String getDepartmentId(){
+        return sp.getString(DEPARTMENT_ID, "");
+    }
     //存储机构信息-json格式
-    public void setOrganInfo(String organInfo) {
+    public void setOrganInfo(RelationshipBean bean) {
+        String organInfo = new Gson().toJson(bean);
+        editor.putString(ORGANIZATION_DEP_CATEGORY, bean.getDepCategory());
+        editor.putString(ORGANIZATION_ID, bean.getOrganizationId()); //存储机构id
+        editor.putString(DEPARTMENT_ID, bean.getDepartmentId());
         editor.putString(ORGANIZATION_INFO, organInfo);
         editor.apply();
     }
 
-    //获取机构信息 TODO-存储机构信息
+    //获取机构信息
     public String getOrganInfo() {
         return sp.getString(ORGANIZATION_INFO, "");
     }
@@ -194,5 +198,17 @@ public class SpOrganUtils {
         editor.remove(patientId);
         editor.apply();
     }
+
+    //医生角色
+    public void setDoctorUserType(String type) {
+        editor.putString(DOCTOR_USER_TYPE, type);
+        editor.apply();
+    }
+
+    //医生角色
+    public String getDoctorUserType() {
+        return sp.getString(DOCTOR_USER_TYPE, AppConstant.TYPE_USER_ROLE_DOCTOR);
+    }
+
 
 }

@@ -9,6 +9,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinzhili.doctor.R;
 import com.xinzhili.doctor.bean.PatientInfoBean;
+import com.xinzhili.doctor.util.ImageLoader;
 import com.xinzhili.doctor.view.PointView;
 import com.xinzhili.mvp.common.AppConstant;
 
@@ -157,8 +158,8 @@ public class PatientOrganAdapter extends BaseQuickAdapter<PatientInfoBean.Patien
         }
 
 
-//        ImageLoader.getInstance().loadNormalPic(mContext, helper.getView(R.id.civ_patient_avatar),
-//                item.getAvatar(), R.drawable.icon_default_user_photo);
+        ImageLoader.getInstance().loadNormalPic(mContext, helper.getView(R.id.civ_patient_avatar),
+                item.getAvatar(), R.drawable.icon_default_user_photo);
 
         TextView tvLevel = helper.getView(R.id.iv_patient_level);
         if (TextUtils.equals(item.getServiceLevel(), USER_PATIENT_LEVEL_VIP)){//病人级别

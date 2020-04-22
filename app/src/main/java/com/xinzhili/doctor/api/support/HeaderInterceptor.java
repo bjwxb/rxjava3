@@ -2,6 +2,7 @@ package com.xinzhili.doctor.api.support;
 
 import com.xinzhili.doctor.App;
 import com.xinzhili.doctor.database.sp.UserInfoUtils;
+import com.xinzhili.doctor.util.AppHeaderUtil;
 
 import java.io.IOException;
 
@@ -35,7 +36,7 @@ public class HeaderInterceptor implements Interceptor {
         } else if (original.url().toString().contains("v0/")){
             Request request = original.newBuilder()
                     .addHeader("Connection", "Keep-Alive")
-                    .addHeader("relationRef", "eyJvSWQiOiIiLCJyb2xlIjoiRE9DVE9SIiwidUlkIjoiOEtLVlA4In0=")
+                    .addHeader("relationRef", AppHeaderUtil.getRequestHeaderRelationRef(""))
                     .addHeader("Authorization", "Bearer " + UserInfoUtils.getAccessToken(App.getInstance().getAppContext()))
                     .build();
 

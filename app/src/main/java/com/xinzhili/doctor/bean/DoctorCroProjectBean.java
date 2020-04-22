@@ -32,7 +32,7 @@ public class DoctorCroProjectBean {
 
         private String id;
         private String projectName;
-        private Object createdAt;
+        private Integer createdAt;
         private String organizationName;
         private int patientCount;
         private int projectDuration;
@@ -53,11 +53,11 @@ public class DoctorCroProjectBean {
             this.projectName = projectName;
         }
 
-        public Object getCreatedAt() {
+        public Integer getCreatedAt() {
             return createdAt;
         }
 
-        public void setCreatedAt(Object createdAt) {
+        public void setCreatedAt(Integer createdAt) {
             this.createdAt = createdAt;
         }
 
