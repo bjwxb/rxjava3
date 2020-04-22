@@ -11,6 +11,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="临床试验"
+        android:padding="@dimen/dp_10"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="add"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="finish"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_finish_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="finish all"
+        android:padding="@dimen/dp_10"
         tools:ignore="HardcodedText" />
 
 </LinearLayout>

@@ -1,9 +1,16 @@
 package com.xinzhili.doctor;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.os.Bundle;
+
+import com.xinzhili.doctor.manager.ActivityManager;
 
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * 描述: App
@@ -13,13 +20,13 @@ import java.util.ArrayList;
  */
 public class App extends Application {
 
-
     private static App instance;
 
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
+        registerActivityLifecycleCallbacks(ActivityManager.getInstance());
     }
 
     //application 单例
@@ -31,4 +38,5 @@ public class App extends Application {
     public Context getAppContext(){
         return getApplicationContext();
     }
+
 }
