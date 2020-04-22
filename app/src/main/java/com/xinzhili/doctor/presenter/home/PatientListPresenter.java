@@ -27,7 +27,7 @@ public class PatientListPresenter extends BaseRxPresenter<PatientListContract.IV
                 .subscribeWith(new BaseObserver<PatientInfoBean>(mView) {
                     @Override
                     public void onSuccess(PatientInfoBean data) {
-
+                        mView.showPatientList(data);
                     }
                 }));
     }

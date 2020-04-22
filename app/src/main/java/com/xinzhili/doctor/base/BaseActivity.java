@@ -44,7 +44,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         setContentView(mUiLoader);
         setStatusBar();
         initButterknife();
-        initPresenter();
         bindPresenter();
 
         initDialog();
@@ -56,9 +55,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     public int getLayoutId(){
         return -1;
     };
-
-    //set presenter
-    public abstract void initPresenter();
 
     /**
      * 对各种控件进行设置、适配、填充数据

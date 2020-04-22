@@ -1,4 +1,4 @@
-package com.xinzhili.doctor.ui.home.activity
+package com.xinzhili.doctor.ui.kotlin
 
 import com.xinzhili.doctor.api.support.LoggingInterceptor
 import com.xinzhili.doctor.bean.base.BaseResponse
@@ -40,11 +40,9 @@ object RetrofitUtil{
 
         service.getDoctorUser2().enqueue(object : Callback<BaseResponse<DoctorBean>> {
             override fun onFailure(call: Call<BaseResponse<DoctorBean>>, t: Throwable) {
-                Dlog.e("111111111111111111" )
             }
 
             override fun onResponse(call: Call<BaseResponse<DoctorBean>>, response: Response<BaseResponse<DoctorBean>>) {
-                Dlog.e("22222222222222222222222222")
             }
         })
     }

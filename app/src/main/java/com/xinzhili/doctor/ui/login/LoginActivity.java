@@ -67,15 +67,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.IView {
     }
 
     @Override
-    public void initPresenter() {
-        mPresenter = new LoginPresenter(this);
-    }
-
-    @Override
     protected BaseContract.BasePresenter<? extends BaseContract.BaseView> getPresenter() {
+        mPresenter = new LoginPresenter(this);
         return mPresenter;
     }
-
 
     @SuppressLint("SetTextI18n")
     @Override

@@ -36,12 +36,8 @@ public class DoctorCroProjectActivity extends BaseActivity implements DoctorCroP
     }
 
     @Override
-    public void initPresenter() {
-        mPresenter = new DoctorCroProjectPresenter();
-    }
-
-    @Override
     protected BaseContract.BasePresenter<? extends BaseContract.BaseView> getPresenter() {
+        mPresenter = new DoctorCroProjectPresenter();
         return mPresenter;
     }
 

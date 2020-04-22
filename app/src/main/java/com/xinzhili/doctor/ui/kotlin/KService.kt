@@ -1,9 +1,8 @@
-package com.xinzhili.doctor.ui.home.activity
+package com.xinzhili.doctor.ui.kotlin
 
 import com.xinzhili.doctor.bean.base.BaseResponse
 import com.xinzhili.doctor.database.sqlite.entity.DoctorBean
 import com.xinzhili.mvp.common.Constant
-import io.reactivex.rxjava3.core.Observable
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -15,9 +14,6 @@ import retrofit2.http.GET
  */
 interface KService{
     //登录后获取医生相关信息
-    @GET(Constant.URL.DOCTOR_USER)
-    fun getDoctorUser(): Call<BaseResponse<DoctorBean>>
-
     @GET(Constant.URL.DOCTOR_USER2)
     fun getDoctorUser2(): Call<BaseResponse<DoctorBean>>
 }

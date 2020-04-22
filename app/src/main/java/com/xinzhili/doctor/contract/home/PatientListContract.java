@@ -1,7 +1,9 @@
 package com.xinzhili.doctor.contract.home;
 
 import com.xinzhili.doctor.base.BaseContract;
+import com.xinzhili.doctor.bean.PatientInfoBean;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,7 +15,7 @@ import java.util.Map;
 public class PatientListContract {
 
     public interface IView extends BaseContract.BaseView {
-        void showPatientList();
+        void showPatientList(PatientInfoBean data);
     }
 
     public interface IPresenter<T> extends BaseContract.BasePresenter<T> {

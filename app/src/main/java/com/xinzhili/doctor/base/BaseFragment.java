@@ -44,7 +44,6 @@ public abstract class BaseFragment extends Fragment implements BaseContract.Base
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         mUnbinder = ButterKnife.bind(this, view);
 
-        initPresenter();
         bindPresenter();
         initDialog();
         initData();
@@ -53,11 +52,6 @@ public abstract class BaseFragment extends Fragment implements BaseContract.Base
 
     public int getLayoutId(){
         return -1;
-    };
-
-    //set presenter
-    public void initPresenter(){
-
     };
 
     private void bindPresenter() {

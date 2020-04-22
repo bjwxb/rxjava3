@@ -39,7 +39,6 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
     @Override
     protected void onStart() {
         super.onStart();
-        //mView.showLoadingView();
         mView.showLoading();
     }
 
@@ -50,13 +49,10 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
             mView.showSuccessView();
         } else if (TextUtils.equals(tBaseResponse.getStatus(), Constant.HttpCode.HTTP_STATUS_FAIL)){
             mView.showErrorView();
-            Dlog.e(new Gson().toJson(tBaseResponse));
             FailedResponse response = new Gson().fromJson(new Gson().toJson(tBaseResponse), FailedResponse.class);
             if (null != response && null != response.getData()){
                 String msg = response.getData().getResult();
-                if (!TextUtils.isEmpty(msg)){
-                    onError(new Throwable(msg));
-                }
+                onError(new Throwable(msg));
             }
 
         }  else {
@@ -103,7 +99,6 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
                 errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_server_error);
             } else if (httpException.code() == Constant.HttpCode.HTTP_CODE_WITHOUT_LOGIN) {
                 errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_without_login);
-                //mView.hideLoading();
                 mView.showToast(errorMsg);
                 onFailed(errorMsg);
                 return;
@@ -135,6 +130,6 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
      * @param message message
      */
     public void onFailed(String message) {
-
+        mView.onFailed(message);
     }
 }
