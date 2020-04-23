@@ -2,7 +2,6 @@ package com.xinzhili.doctor.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import com.free.statuslayout.manager.OnRetryListener;
 import com.free.statuslayout.manager.StatusLayoutManager;
 import com.xinzhili.doctor.R;
-import com.xinzhili.doctor.util.Dlog;
 import com.xinzhili.doctor.util.ToastUtils;
 import com.xinzhili.doctor.view.LoadingDialog;
 
@@ -30,7 +28,6 @@ import butterknife.Unbinder;
  */
 public abstract class BaseFragment extends Fragment implements BaseContract.BaseView{
 
-    private AbstractUiLoader mUiLoader;
     private Unbinder mUnbinder;//注解
     private LoadingDialog mLoadingDialog;
     public Context mContext;
@@ -94,12 +91,8 @@ public abstract class BaseFragment extends Fragment implements BaseContract.Base
                 .build();
     }
 
-    private OnRetryListener mOnRetryListener = new OnRetryListener() {
-        @Override
-        public void onRetry() {
-            doRetry();
-        }
-    };
+    //子类重新加载监听
+    private OnRetryListener mOnRetryListener = this::doRetry;
 
     private void bindPresenter() {
         BaseContract.BasePresenter presenter = getPresenter();
@@ -114,6 +107,7 @@ public abstract class BaseFragment extends Fragment implements BaseContract.Base
 
     public abstract void initData();
 
+    //点击重新加载页面
     public void doRetry(){};
 
     private void initDialog(){
@@ -138,26 +132,22 @@ public abstract class BaseFragment extends Fragment implements BaseContract.Base
     }
 
     @Override
-    public void showEmptyView() {
-        Dlog.e("********* showEmptyView ************");
+    public void showEmptyView() {//在子类中调用
         mStatusLayoutManager.showEmptyData();
     }
 
     @Override
-    public void showErrorView() {
-        Dlog.e("********* showErrorView ************");
+    public void showErrorView() {//在子类中调用
         mStatusLayoutManager.showError(R.drawable.ic_tip_no_network, "接口请求错误");
     }
 
     @Override
     public void showNoNetWorkView() {
-        Dlog.e("********* showNoNetWorkView ************");
         mStatusLayoutManager.showNetWorkError();
     }
 
     @Override
     public void showSuccessView() {
-        Dlog.e("********* showSuccessView ************");
         mStatusLayoutManager.showContent();
     }
 

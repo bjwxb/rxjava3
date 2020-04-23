@@ -58,7 +58,6 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
             mView.showSuccessView();
             onSuccess(tBaseResponse.getData());
         } else if (TextUtils.equals(tBaseResponse.getStatus(), Constant.HttpCode.HTTP_STATUS_FAIL)){
-            mView.showErrorView();
             Dlog.e(new Gson().toJson(tBaseResponse));
             FailedResponse response = new Gson().fromJson(new Gson().toJson(tBaseResponse), FailedResponse.class);
             if (null != response && null != response.getData()){
@@ -66,8 +65,7 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
                 onError(new Throwable(msg));
             }
 
-        }  else {
-            mView.showErrorView();
+        } else {
             if (!TextUtils.isEmpty(tBaseResponse.getResult())){
                 onError(new Throwable(tBaseResponse.getResult()));
             }
@@ -76,14 +74,11 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
 
     @Override
     public void onError(@NonNull Throwable e) {
-        if (showDialog){
-            mView.hideLoading();
-        }
-        mView.showErrorView();
+        hideLoading();
         String errorMsg = "";
         if (e instanceof UnknownHostException) {
             errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_un_know_host_exception);
-            mView.showNoNetWorkView();
+            //mView.showNoNetWorkView();
         } else if (e instanceof SocketTimeoutException) {
             errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_socket_time_out_exception);
         } else if (e instanceof HttpException) {
@@ -98,7 +93,7 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
                 ee.printStackTrace();
             }
             if (!TextUtils.isEmpty(errorMsg)){
-                mView.showToast(errorMsg);
+                showToast(errorMsg);
                 onFailed(errorMsg);
                 return;
             }
@@ -106,7 +101,7 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
                 errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_server_error);
             } else if (httpException.code() == Constant.HttpCode.HTTP_CODE_WITHOUT_LOGIN) {
                 errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_without_login);
-                mView.showToast(errorMsg);
+                showToast(errorMsg);
                 onFailed(errorMsg);
                 return;
             } else {
@@ -117,15 +112,23 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
         } else {
             errorMsg = e.getMessage();
         }
-        mView.showToast(errorMsg);
+        showToast(errorMsg);
         onFailed(errorMsg);
     }
 
     @Override
     public void onComplete() {
+        hideLoading();
+    }
+
+    private void hideLoading(){
         if (showDialog){
             mView.hideLoading();
         }
+    }
+
+    private void showToast(String msg){
+        mView.showToast(msg);
     }
 
     /**

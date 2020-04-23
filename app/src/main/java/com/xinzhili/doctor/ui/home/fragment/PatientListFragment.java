@@ -178,6 +178,9 @@ public class PatientListFragment extends BaseLazyFragment
     public void onFailed(String message) {
         mAdapter.loadMoreFail();
         swipeRefreshLayout.setRefreshing(false);
+        if (mPatientList.size() == 0){
+            showErrorView();
+        }
     }
 
     @Override
