@@ -20,11 +20,11 @@ public class PatientListPresenter extends BaseRxPresenter<PatientListContract.IV
                     implements PatientListContract.IPresenter<PatientListContract.IView>{
 
     @Override
-    public void getPatientListData(Map<String, String> map) {
+    public void getPatientListData(Map<String, String> map, boolean showDialog) {
         addSubscribe(mApiService.getPatientList(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new BaseObserver<PatientInfoBean>(mView) {
+                .subscribeWith(new BaseObserver<PatientInfoBean>(mView, showDialog) {
                     @Override
                     public void onSuccess(PatientInfoBean data) {
                         mView.showPatientList(data);

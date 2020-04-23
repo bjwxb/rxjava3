@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/img_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:layout_marginBottom="@dimen/dp_36"
+        android:src="@drawable/ic_tip_no_network" />
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/tip_network_error"
+        android:textColor="@color/c_858e99"
+        android:textSize="@dimen/text_size_15sp" />
+
+
+    <TextView
+        android:id="@+id/ll_state_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_108"
+        android:paddingStart="@dimen/dp_28"
+        android:paddingEnd="@dimen/dp_28"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"
+        android:background="@drawable/selector_bg_sure"
+        android:text="@string/reloading"/>
+
+</LinearLayout>

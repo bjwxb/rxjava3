@@ -23,8 +23,6 @@ public class BaseContract {
 
         void showErrorView();
 
-        void showLoadingView();
-
         void showNoNetWorkView();
 
         void showSuccessView();

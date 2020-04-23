@@ -35,8 +35,6 @@ dependencies {
     api rootProject.ext.dependencies["rxbinding"]
     api rootProject.ext.dependencies["rxpermissions"]
     api 'com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0'
-    //日志的拦截器
-    api 'com.squareup.okhttp3:logging-interceptor:3.9.0'
 
     //Google类库
     api rootProject.ext.dependencies["zxing"]

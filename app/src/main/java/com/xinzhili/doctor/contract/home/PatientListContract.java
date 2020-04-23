@@ -19,6 +19,6 @@ public class PatientListContract {
     }
 
     public interface IPresenter<T> extends BaseContract.BasePresenter<T> {
-        void getPatientListData(Map<String, String> map);
+        void getPatientListData(Map<String, String> map, boolean showDialog);
     }
 }

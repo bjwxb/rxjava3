@@ -10,6 +10,7 @@ import com.xinzhili.doctor.util.Dlog;
 public abstract class BaseLazyFragment extends BaseFragment{
 
     private boolean isFirstLoad = true; // 是否第一次加载
+    private boolean isVisible = false;
 
     @Override
     public void onResume() {
@@ -18,14 +19,19 @@ public abstract class BaseLazyFragment extends BaseFragment{
             lazyLoad();
             isFirstLoad = false;
         }
-
+        isVisible = true;
         onVisible();
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        isVisible = false;
         onInvisible();
+    }
+
+    public boolean isFragmentVisible(){
+        return isVisible;
     }
 
     /**

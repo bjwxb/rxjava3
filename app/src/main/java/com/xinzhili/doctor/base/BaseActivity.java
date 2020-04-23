@@ -116,27 +116,18 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     @Override
     public void showEmptyView() {
-        mUiLoader.setStatus(AbstractUiLoader.Status.EMPTY);
     }
 
     @Override
     public void showErrorView() {
-        mUiLoader.setStatus(AbstractUiLoader.Status.ERROR);
-    }
-
-    @Override
-    public void showLoadingView() {
-        mUiLoader.setStatus(AbstractUiLoader.Status.LOADING);
     }
 
     @Override
     public void showNoNetWorkView() {
-        mUiLoader.setStatus(AbstractUiLoader.Status.NO_NETWORK);
     }
 
     @Override
     public void showSuccessView() {
-        mUiLoader.setStatus(AbstractUiLoader.Status.SUCCESS);
     }
 
     @Override

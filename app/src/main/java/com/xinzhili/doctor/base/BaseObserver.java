@@ -30,23 +30,33 @@ import retrofit2.HttpException;
 public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> {
     private BaseContract.BaseView mView;
     private Context mContext;
+    private boolean showDialog = true;
 
     protected BaseObserver(BaseContract.BaseView view) {
         mView = view;
         this.mContext = App.getInstance().getAppContext();
     }
 
+    protected BaseObserver(BaseContract.BaseView view, boolean showDialog) {
+        mView = view;
+        this.mContext = App.getInstance().getAppContext();
+        this.showDialog = showDialog;
+    }
+
+
     @Override
     protected void onStart() {
         super.onStart();
-        mView.showLoading();
+        if (showDialog){
+            mView.showLoading();
+        }
     }
 
     @Override
     public void onNext(@NonNull BaseResponse<T> tBaseResponse) {
         if (TextUtils.equals(tBaseResponse.getStatus(), Constant.HttpCode.HTTP_STATUS_SUCCESS)){
-            onSuccess(tBaseResponse.getData());
             mView.showSuccessView();
+            onSuccess(tBaseResponse.getData());
         } else if (TextUtils.equals(tBaseResponse.getStatus(), Constant.HttpCode.HTTP_STATUS_FAIL)){
             mView.showErrorView();
             Dlog.e(new Gson().toJson(tBaseResponse));
@@ -66,7 +76,10 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
 
     @Override
     public void onError(@NonNull Throwable e) {
-        mView.hideLoading();
+        if (showDialog){
+            mView.hideLoading();
+        }
+        mView.showErrorView();
         String errorMsg = "";
         if (e instanceof UnknownHostException) {
             errorMsg = mContext.getResources().getString(com.xinzhili.mvp.R.string.http_un_know_host_exception);
@@ -110,7 +123,9 @@ public abstract class BaseObserver<T> extends ResourceObserver<BaseResponse<T>> 
 
     @Override
     public void onComplete() {
-        mView.hideLoading();
+        if (showDialog){
+            mView.hideLoading();
+        }
     }
 
     /**

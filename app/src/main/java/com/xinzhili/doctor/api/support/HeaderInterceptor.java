@@ -36,7 +36,7 @@ public class HeaderInterceptor implements Interceptor {
         } else if (original.url().toString().contains("v0/")){
             Request request = original.newBuilder()
                     .addHeader("Connection", "Keep-Alive")
-                    .addHeader("relationRef", AppHeaderUtil.getRequestHeaderRelationRef(""))
+                    .addHeader("relationRef", AppHeaderUtil.getInstance().getRelationRef())
                     .addHeader("Authorization", "Bearer " + UserInfoUtils.getAccessToken(App.getInstance().getAppContext()))
                     .build();
 

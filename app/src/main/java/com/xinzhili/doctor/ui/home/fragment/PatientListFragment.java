@@ -13,6 +13,7 @@ import com.xinzhili.doctor.event.OrganChangeEvent;
 import com.xinzhili.doctor.presenter.home.PatientListPresenter;
 import com.xinzhili.doctor.ui.home.adapter.PatientOrganAdapter;
 import com.xinzhili.doctor.ui.kotlin.RetrofitUtil;
+import com.xinzhili.doctor.util.AppHeaderUtil;
 import com.xinzhili.doctor.util.Dlog;
 import com.xinzhili.doctor.util.SingletonUtil;
 import com.xinzhili.doctor.view.CustomLoadMoreView;
@@ -134,7 +135,13 @@ public class PatientListFragment extends BaseLazyFragment
         } else if (TextUtils.equals(mDoctorRoleType, AppConstant.TYPE_USER_ROLE_DOCTOR)){
             map.put("haveAssistant", "true");
         }
-        mPresenter.getPatientListData(map);
+        AppHeaderUtil.getInstance().setRequestHeaderRelationRef("", mDoctorRoleType);
+        mPresenter.getPatientListData(map, page == 0);
+    }
+
+    @Override
+    public void doRetry() {
+        resetData();
     }
 
     //重新加载数据
@@ -148,18 +155,18 @@ public class PatientListFragment extends BaseLazyFragment
     //通过筛选，风险因素、病种和省份 显示患者列表
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(OrganChangeEvent event) {
+        Dlog.e("111111111111111111111111");
         resetData();
     }
 
     @Override
     protected void lazyLoad() {
-        SingletonUtil.getInstance().setDoctorUserType(mDoctorRoleType);
-        getPatientList();
+        resetData();
     }
 
     @Override
     public void onVisible() {
-        SingletonUtil.getInstance().setDoctorUserType(mDoctorRoleType);
+        AppHeaderUtil.getInstance().setRequestHeaderRelationRef("", mDoctorRoleType);
     }
 
     @Override
@@ -169,7 +176,6 @@ public class PatientListFragment extends BaseLazyFragment
 
     @Override
     public void onFailed(String message) {
-        Dlog.e("================" +message);
         mAdapter.loadMoreFail();
         swipeRefreshLayout.setRefreshing(false);
     }
@@ -188,6 +194,10 @@ public class PatientListFragment extends BaseLazyFragment
             }
         } else {
             mAdapter.loadMoreEnd();
+        }
+
+        if (mPatientList.size() == 0){
+            showEmptyView();
         }
     }
 

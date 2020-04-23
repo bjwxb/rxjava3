@@ -7,8 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.free.statuslayout.manager.OnRetryListener;
+import com.free.statuslayout.manager.StatusLayoutManager;
+import com.xinzhili.doctor.R;
+import com.xinzhili.doctor.util.Dlog;
 import com.xinzhili.doctor.util.ToastUtils;
 import com.xinzhili.doctor.view.LoadingDialog;
+
+import org.jetbrains.annotations.NotNull;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,9 +31,11 @@ import butterknife.Unbinder;
 public abstract class BaseFragment extends Fragment implements BaseContract.BaseView{
 
     private AbstractUiLoader mUiLoader;
-    protected Unbinder mUnbinder;//注解
+    private Unbinder mUnbinder;//注解
     private LoadingDialog mLoadingDialog;
     public Context mContext;
+    private StatusLayoutManager mStatusLayoutManager;
+    private boolean isVisible = false;//fragment是否可见
 
 
     @Override
@@ -36,8 +44,9 @@ public abstract class BaseFragment extends Fragment implements BaseContract.Base
         mContext = context;
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(getLayoutId(), container, false);
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        initStatusLayout();
+        return mStatusLayoutManager.getRootLayout();
     }
 
     @Override
@@ -50,8 +59,46 @@ public abstract class BaseFragment extends Fragment implements BaseContract.Base
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        isVisible = true;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isVisible = false;
+    }
+
+    public boolean isFragmentVisible(){
+        return isVisible;
+    }
+
     public int getLayoutId(){
         return -1;
+    };
+
+    private void initStatusLayout(){
+        mStatusLayoutManager = StatusLayoutManager.newBuilder(mContext)
+                .contentView(getLayoutId())
+                .emptyDataView(R.layout.default_empty_view)
+                .errorView(R.layout.default_net_error_view)
+                .netWorkErrorView(R.layout.default_net_error_view)
+                .errorIconImageId(R.id.img_state)
+                .errorTextTipId(R.id.tv_hint)
+                .emptyDataIconImageId(R.id.img_state)
+                .emptyDataTextTipId(R.id.tv_hint)
+                .retryViewId(R.id.ll_state_parent)
+                .onRetryListener(mOnRetryListener)
+                .build();
+    }
+
+    private OnRetryListener mOnRetryListener = new OnRetryListener() {
+        @Override
+        public void onRetry() {
+            doRetry();
+        }
     };
 
     private void bindPresenter() {
@@ -61,18 +108,19 @@ public abstract class BaseFragment extends Fragment implements BaseContract.Base
         }
     }
 
-
     protected BaseContract.BasePresenter<? extends BaseContract.BaseView> getPresenter() {
         return null;
     }
 
     public abstract void initData();
 
+    public void doRetry(){};
+
     private void initDialog(){
         LoadingDialog.Builder builder=new LoadingDialog.Builder(mContext)
                 .setMessage("正在加载中")
                 .setShowMessage(true);
-        mLoadingDialog = builder.create();
+       mLoadingDialog = builder.create();
     }
 
     @Override
@@ -91,32 +139,33 @@ public abstract class BaseFragment extends Fragment implements BaseContract.Base
 
     @Override
     public void showEmptyView() {
-
+        Dlog.e("********* showEmptyView ************");
+        mStatusLayoutManager.showEmptyData();
     }
 
     @Override
     public void showErrorView() {
-
-    }
-
-    @Override
-    public void showLoadingView() {
-
+        Dlog.e("********* showErrorView ************");
+        mStatusLayoutManager.showError(R.drawable.ic_tip_no_network, "接口请求错误");
     }
 
     @Override
     public void showNoNetWorkView() {
-
+        Dlog.e("********* showNoNetWorkView ************");
+        mStatusLayoutManager.showNetWorkError();
     }
 
     @Override
     public void showSuccessView() {
-
+        Dlog.e("********* showSuccessView ************");
+        mStatusLayoutManager.showContent();
     }
 
     @Override
     public void showToast(String msg) {
-        ToastUtils.showCustom(mContext, msg);
+        if (isVisible){
+            ToastUtils.showCustom(mContext, msg);
+        }
     }
 
     @Override
