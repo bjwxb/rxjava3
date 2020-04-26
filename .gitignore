@@ -57,5 +57,4 @@ proguard/
 
 # Keystore files
 
-*.properties
 *.misc
