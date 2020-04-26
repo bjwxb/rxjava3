@@ -1,11 +1,9 @@
-package com.xinzhili.doctor.ui.kotlin
+package com.xinzhili.kotlin
 
 import com.xinzhili.doctor.api.support.HeaderInterceptor
 import com.xinzhili.doctor.api.support.LoggingInterceptor
 import com.xinzhili.doctor.bean.base.BaseResponse
 import com.xinzhili.doctor.database.sqlite.entity.DoctorBean
-import com.xinzhili.doctor.util.Dlog
-import com.xinzhili.doctor.util.ToastUtils
 import com.xinzhili.mvp.common.Constant
 import okhttp3.OkHttpClient
 import retrofit2.Call

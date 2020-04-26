@@ -12,7 +12,6 @@ import com.xinzhili.doctor.contract.home.PatientListContract;
 import com.xinzhili.doctor.event.OrganChangeEvent;
 import com.xinzhili.doctor.presenter.home.PatientListPresenter;
 import com.xinzhili.doctor.ui.home.adapter.PatientOrganAdapter;
-import com.xinzhili.doctor.ui.kotlin.RetrofitUtil;
 import com.xinzhili.doctor.util.AppHeaderUtil;
 import com.xinzhili.doctor.util.Dlog;
 import com.xinzhili.doctor.util.SingletonUtil;

@@ -1,4 +1,4 @@
-package com.xinzhili.doctor.ui.kotlin
+package com.xinzhili.kotlin
 
 import com.xinzhili.doctor.bean.base.BaseResponse
 import com.xinzhili.doctor.database.sqlite.entity.DoctorBean
