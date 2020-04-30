@@ -8,7 +8,7 @@ package com.xinzhili.kotlin.school
  */
 open class Person(val name:String, val age: Int){
     init {
-        println("********* super init")
+        //println("********* super init")
     }
 }
 
