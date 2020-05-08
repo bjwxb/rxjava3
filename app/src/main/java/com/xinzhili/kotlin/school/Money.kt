@@ -1,7 +1,7 @@
 package com.xinzhili.kotlin.school
 
 /**
- * 描述: 运算符重载
+ * 描述: operator 运算符重载
  * 创建者: wuxiaobo
  * 邮箱: wuxiaobo@xinzhili.cn
  * 日期: 2020/4/27 16:28

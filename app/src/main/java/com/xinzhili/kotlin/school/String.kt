@@ -19,14 +19,14 @@ fun String.letterCount():Int{
     return count;
 }
 
-//operator fun String.times(t:Int):String{
-//    val sb = StringBuilder()
-//    repeat(t){
-//        sb.append(this)
-//    }
-//    return sb.toString()
-//}
+operator fun String.times(t:Int):String{
+    val sb = StringBuilder()
+    repeat(t){
+        sb.append(this)
+    }
+    return sb.toString()
+}
 
-operator fun String.times(n:Int) = repeat(n)
+//operator fun String.times(n:Int) = repeat(n)
 
  

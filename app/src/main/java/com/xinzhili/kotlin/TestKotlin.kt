@@ -93,7 +93,7 @@ class TestKotlin{
         @JvmStatic
         fun main(args: Array<String>){
             runBlocking {
-
+                println()
             }
         }
     }
