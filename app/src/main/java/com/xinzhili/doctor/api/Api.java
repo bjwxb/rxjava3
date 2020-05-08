@@ -40,7 +40,6 @@ public class Api {
     //构建OKHttpClient
     private OkHttpClient getOkHttpClient(){
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                .connectTimeout(10, TimeUnit.SECONDS)
                 .connectTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
                 .readTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
                 .retryOnConnectionFailure(true) // 失败重发
