@@ -28,6 +28,7 @@ import com.xinzhili.doctor.util.RotateUtils;
 import com.xinzhili.doctor.util.SingletonUtil;
 import com.xinzhili.doctor.util.StringUtils;
 import com.xinzhili.doctor.view.IndexViewPager;
+import com.xinzhili.kotlin.ui.TestKotlinActivity;
 import com.xinzhili.mvp.common.AppConstant;
 import com.xinzhili.mvp.common.Config;
 
@@ -299,6 +300,8 @@ public class HomeFragment extends BaseLazyFragment {
                 mPopupWindow.showAsDropDown(tvOrganName);
                 break;
             case R.id.iv_add:
+                Dlog.e("-----------------");
+                TestKotlinActivity.actionStart(mContext, "July");
                 break;
         }
     }

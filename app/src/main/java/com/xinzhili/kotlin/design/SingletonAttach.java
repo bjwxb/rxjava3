@@ -21,8 +21,8 @@ import java.lang.reflect.Constructor;
 public class SingletonAttach {
 
     public static void main(String[] args) {
-//        reflectionAttack();
-        serializationAttack();
+        reflectionAttack();
+//        serializationAttack();
     }
 
     public static void serializationAttack() {
