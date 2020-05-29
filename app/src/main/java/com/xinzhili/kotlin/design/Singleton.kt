@@ -20,7 +20,7 @@ class KtSingleton{
     }
 
     object SingletonHolder {
-        val INSTANCE = KtSingleton()
+        val INSTANCE :KtSingleton by lazy {KtSingleton()}
     }
 
     fun doSomething(){

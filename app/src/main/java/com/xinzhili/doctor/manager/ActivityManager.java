@@ -7,6 +7,10 @@ import android.os.Bundle;
 
 import com.xinzhili.doctor.util.Dlog;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -98,38 +102,39 @@ public class ActivityManager  implements Application.ActivityLifecycleCallbacks 
     public boolean isForeground(){
         return count == 1;
     }
+
     @Override
-    public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+    public void onActivityCreated(@NotNull Activity activity, Bundle savedInstanceState) {
         addActivity(activity);
     }
 
     @Override
-    public void onActivityStarted(Activity activity) {
+    public void onActivityStarted(@NotNull Activity activity) {
         count++;
     }
 
     @Override
-    public void onActivityResumed(Activity activity) {
+    public void onActivityResumed(@NotNull Activity activity) {
 
     }
 
     @Override
-    public void onActivityPaused(Activity activity) {
+    public void onActivityPaused(@NotNull Activity activity) {
 
     }
 
     @Override
-    public void onActivityStopped(Activity activity) {
+    public void onActivityStopped(@NotNull Activity activity) {
         count--;
     }
 
     @Override
-    public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+    public void onActivitySaveInstanceState(@NotNull Activity activity, @NotNull Bundle outState) {
 
     }
 
     @Override
-    public void onActivityDestroyed(Activity activity) {
+    public void onActivityDestroyed(@NotNull Activity activity) {
         removeActivity(activity);
     }
 }
