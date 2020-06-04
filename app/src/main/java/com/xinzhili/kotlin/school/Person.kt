@@ -6,11 +6,16 @@ package com.xinzhili.kotlin.school
  * 邮箱: wuxiaobo@xinzhili.cn
  * 日期: 2020/4/27 10:58
  */
-open class Person(val name:String, val age: Int){
+open class Person(val name:String, val age: Int = 20){
     init {
         //println("********* super init")
     }
+
+    fun test(){
+        print("----------- test ---------------")
+    }
 }
+
 
 interface Study{
     fun studyEnglish()

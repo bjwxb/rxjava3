@@ -1019,6 +1019,8 @@
     <string name="txt_collapsed">关闭</string>
     <string name="all_organ">全部机构</string>
 
+    <string name="load_failed">加载失败</string>
+    <string name="loading">加载中</string>
     <string name="tip_patient_add">请选择将该患者添加到的机构</string>
 
     <!-- 我的资料编辑 -->
@@ -1038,4 +1040,5 @@
         <item>五</item>
         <item>六</item>
     </string-array>
+
 </resources>

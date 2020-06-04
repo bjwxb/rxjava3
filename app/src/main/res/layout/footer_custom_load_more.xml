@@ -17,7 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dp_4"
-            android:indeterminateDrawable="@drawable/sample_footer_loading_progress"
             android:indeterminateDuration="700" />
 
         <TextView
