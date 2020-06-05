@@ -10,7 +10,18 @@ import java.io.Serializable;
  */
 public class DoubleCheckLockSingleton implements Serializable {
     private volatile static DoubleCheckLockSingleton mInstance;
-    private DoubleCheckLockSingleton(){}
+    private static boolean flag = false;
+
+    private DoubleCheckLockSingleton(){
+        synchronized (DoubleCheckLockSingleton.class){
+            if (!flag){
+                flag = !flag;
+            } else {
+                throw new RuntimeException("单例模式正在被攻击");
+            }
+        }
+    }
+
 
     public static DoubleCheckLockSingleton getInstance(){
         if (null == mInstance){
@@ -22,6 +33,11 @@ public class DoubleCheckLockSingleton implements Serializable {
         }
 
         return mInstance;
+    }
+
+    //可防止序列化攻击
+    public Object readResolve() {
+        return getInstance();
     }
 
     void printHashcode(){
