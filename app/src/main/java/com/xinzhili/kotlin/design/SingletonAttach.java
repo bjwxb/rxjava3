@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 
 /**
  * 描述: 单例 反射攻击与序列化攻击
@@ -53,8 +54,13 @@ public class SingletonAttach {
 
             Constructor constructor = DoubleCheckLockSingleton.class.getDeclaredConstructor();
             constructor.setAccessible(true);
+
             DoubleCheckLockSingleton s1 = (DoubleCheckLockSingleton)constructor.newInstance();
+            Field[] fields = DoubleCheckLockSingleton.class.getDeclaredFields();
+            fields[1].setAccessible(true);//通过修改属性值后，flag防反射失效
+            fields[1].setBoolean(s1, false);
             DoubleCheckLockSingleton s2 = (DoubleCheckLockSingleton)constructor.newInstance();
+
 
             s1.printHashcode();
             s2.printHashcode();
