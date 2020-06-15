@@ -1,0 +1,19 @@
+{
+  "buildFiles": [
+    "D:\\Android\\Android\\android-sdk\\ndk\\21.2.6472646\\build\\cmake\\android.toolchain.cmake",
+    "D:\\Android\\Android\\android-sdk\\ndk\\21.2.6472646\\build\\cmake\\platforms.cmake",
+    "D:\\wuxiaobo\\Doctor\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "D:\\Android\\Android\\android-sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\wuxiaobo\\Doctor\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" clean"
+  ],
+  "buildTargetsCommand": "D:\\Android\\Android\\android-sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"D:\\wuxiaobo\\Doctor\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "aes-Debug-armeabi-v7a": {
+      "artifactName": "aes",
+      "buildCommand": "D:\\Android\\Android\\android-sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\wuxiaobo\\Doctor\\app\\.cxx\\cmake\\debug\\armeabi-v7a\" aes",
+      "abi": "armeabi-v7a",
+      "output": "D:\\wuxiaobo\\Doctor\\app\\build\\intermediates\\cmake\\debug\\obj\\armeabi-v7a\\libaes.so"
+    }
+  }
+}

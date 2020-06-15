@@ -13,13 +13,13 @@ public class DoubleCheckLockSingleton implements Serializable {
     private static boolean flag = false;
 
     private DoubleCheckLockSingleton(){
-        synchronized (DoubleCheckLockSingleton.class){
-            if (!flag){
-                flag = !flag;
-            } else {
-                throw new RuntimeException("单例模式正在被攻击");
-            }
-        }
+//        synchronized (DoubleCheckLockSingleton.class){
+//            if (!flag){
+//                flag = !flag;
+//            } else {
+//                throw new RuntimeException("单例模式正在被攻击");
+//            }
+//        }
     }
 
 

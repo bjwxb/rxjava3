@@ -1,0 +1,42 @@
+{
+  "stringTable": {
+    "0": "D:/wuxiaobo/Doctor/app/.cxx/cmake/release/x86_64",
+    "1": "--target=x86_64-none-linux-android21 --gcc-toolchain=D:/Android/Android/android-sdk/ndk/21.2.6472646/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/Android/android-sdk/ndk/21.2.6472646/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Daes_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -O2 -DNDEBUG -fPIC"
+  },
+  "buildFiles": [
+    "D:\\Android\\Android\\android-sdk\\ndk\\21.2.6472646\\build\\cmake\\android.toolchain.cmake",
+    "D:\\Android\\Android\\android-sdk\\ndk\\21.2.6472646\\build\\cmake\\platforms.cmake",
+    "D:\\wuxiaobo\\Doctor\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "D:\\Android\\Android\\android-sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\wuxiaobo\\Doctor\\app\\.cxx\\cmake\\release\\x86_64\" clean"
+  ],
+  "buildTargetsCommand": "D:\\Android\\Android\\android-sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"D:\\wuxiaobo\\Doctor\\app\\.cxx\\cmake\\release\\x86_64\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "aes-Release-x86_64": {
+      "buildCommand": "D:\\Android\\Android\\android-sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"D:\\wuxiaobo\\Doctor\\app\\.cxx\\cmake\\release\\x86_64\" aes",
+      "buildType": "release",
+      "toolchain": "3888444926",
+      "abi": "x86_64",
+      "artifactName": "aes",
+      "files": [
+        {
+          "src": "D:\\wuxiaobo\\Doctor\\app\\src\\main\\cpp\\aes.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "D:\\wuxiaobo\\Doctor\\app\\build\\intermediates\\cmake\\release\\obj\\x86_64\\libaes.so"
+    }
+  },
+  "toolchains": {
+    "3888444926": {
+      "cppCompilerExecutable": "D:\\Android\\Android\\android-sdk\\ndk\\21.2.6472646\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

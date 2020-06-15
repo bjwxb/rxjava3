@@ -33,7 +33,6 @@ public class JSingleton implements Serializable {
         return Holder.INSTANCE;
     }
 
-
     //可防止序列化攻击
     public Object readResolve() {
         return getInstance();

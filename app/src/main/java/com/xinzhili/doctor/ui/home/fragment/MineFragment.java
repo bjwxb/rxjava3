@@ -1,16 +1,14 @@
 package com.xinzhili.doctor.ui.home.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.xinzhili.doctor.R;
 import com.xinzhili.doctor.base.BaseLazyFragment;
-import com.xinzhili.doctor.util.Dlog;
+import com.xinzhili.doctor.jni.JniUtil;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 描述:
@@ -19,6 +17,10 @@ import com.xinzhili.doctor.util.Dlog;
  * 日期: 2020/4/21 10:01
  */
 public class MineFragment extends BaseLazyFragment {
+
+    @BindView(R.id.tv_mine)
+    TextView tvMine;
+    private JniUtil mJni = new JniUtil();
 
     /**
      * Use this factory method to create a new instance of
@@ -53,5 +55,12 @@ public class MineFragment extends BaseLazyFragment {
     @Override
     protected void lazyLoad() {
 
+    }
+
+    @OnClick(R.id.tv_mine)
+    public void onViewClicked() {
+        String str = mJni.hello("July");
+        String str2 = mJni.strFromJni();
+        showToast(str + str2);
     }
 }

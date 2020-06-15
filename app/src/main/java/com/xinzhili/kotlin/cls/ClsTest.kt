@@ -10,6 +10,9 @@ import com.xinzhili.kotlin.school.Person
  */
 class Chinese(val from:String, name:String = "jack"): Person(name){
 
+    init {
+        println("************ init **************")
+    }
 
 }
 
@@ -38,6 +41,7 @@ class Bird:FlyInterface, AnimalInterface{
 fun main() {
     val bird = Bird()
     println(bird.kind())
+
 //    val c = Chinese("China")
 //    println("我来自 ${c.from}, wo shi ${c.name}")
 //    c.test()

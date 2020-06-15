@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.xinzhili.doctor.R;
 import com.xinzhili.doctor.base.BaseLazyFragment;
+import com.xinzhili.doctor.jni.JniUtil;
 import com.xinzhili.doctor.ui.mine.CroProjectInfoActivity;
 import com.xinzhili.doctor.ui.mine.DoctorCroProjectActivity;
 import com.xinzhili.doctor.util.Dlog;
@@ -30,6 +31,7 @@ public class MainOrderFragment extends BaseLazyFragment {
 
     @BindView(R.id.tv_test)
     TextView tvTest;
+
 
     /**
      * Use this factory method to create a new instance of
@@ -62,6 +64,7 @@ public class MainOrderFragment extends BaseLazyFragment {
 
     @Override
     protected void lazyLoad() {
+
     }
 
     @OnClick(R.id.tv_test)

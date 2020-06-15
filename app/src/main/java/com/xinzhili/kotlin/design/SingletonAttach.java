@@ -4,6 +4,8 @@ import android.util.JsonReader;
 
 import com.xinzhili.doctor.util.Dlog;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -22,19 +24,25 @@ import java.lang.reflect.Field;
 public class SingletonAttach {
 
     public static void main(String[] args) {
-        reflectionAttack();
-//        serializationAttack();
+//        reflectionAttack();
+        serializationAttack();
+//        EventBus eb = EventBus.builder().throwSubscriberException(true).build();
+//        EventBus eb2 = EventBus.builder().build();
+//        System.out.println(eb2 +" >>>>>>> " +eb2);
+//        System.out.println(eb2 == eb2);
+
     }
 
     public static void serializationAttack() {
         ObjectOutputStream outputStream = null;
         try {
             outputStream = new ObjectOutputStream(new FileOutputStream("serFile"));
-            DoubleCheckLockSingleton s1 = DoubleCheckLockSingleton.getInstance();
+            EnumSingleton s1 = EnumSingleton.INSTANCE;
             outputStream.writeObject(s1);
 
             ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(new File("serFile")));
-            DoubleCheckLockSingleton s2 = (DoubleCheckLockSingleton)inputStream.readObject();
+            EnumSingleton s2 = EnumSingleton.INSTANCE;
+//            DoubleCheckLockSingleton s2 = (DoubleCheckLockSingleton)inputStream.readObject();
             s1.printHashcode();
             s2.printHashcode();
             System.out.println(s1 == s2);//false, 若是枚举实现则返回true

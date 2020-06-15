@@ -7,6 +7,19 @@ package com.xinzhili.kotlin.school
  * 日期: 2020/5/14 16:07
  */
 fun main(){
+    //// sumBy函数的源码
+    //public inline fun CharSequence.sumBy(selector: (Char) -> Int): Int {
+    //    var sum: Int = 0
+    //    for (element in this) {
+    //        sum += selector(element)
+    //    }
+    //    return sum
+    //}
+
+    val a:List<String>
+    val str = "abc"
+    val sum = str.sumBy { it.toInt() - 90 }
+    println(sum)
 
     //with start\
 //    val str = "hello"
