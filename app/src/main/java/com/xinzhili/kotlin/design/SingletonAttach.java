@@ -1,7 +1,10 @@
 package com.xinzhili.kotlin.design;
 
 import android.util.JsonReader;
+import android.view.Window;
 
+import com.bumptech.glide.Glide;
+import com.xinzhili.doctor.App;
 import com.xinzhili.doctor.util.Dlog;
 
 import org.greenrobot.eventbus.EventBus;

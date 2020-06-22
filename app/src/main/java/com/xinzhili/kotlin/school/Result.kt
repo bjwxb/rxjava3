@@ -1,5 +1,6 @@
 package com.xinzhili.kotlin.school
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import java.lang.Exception
 
 /**
@@ -25,5 +26,6 @@ fun getMsg(result: Result) = when(result){
 fun main(){
     val s = "abdc909#@1"
     println(">> " + s.letterCount())
+
 }
 

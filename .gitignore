@@ -58,3 +58,5 @@ proguard/
 # Keystore files
 
 *.misc
+
+.cxx/

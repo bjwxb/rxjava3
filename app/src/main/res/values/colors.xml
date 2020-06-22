@@ -86,6 +86,9 @@
     <color name="c_818181">#818181</color>
     <color name="c_3a3a3a">#3a3a3a</color>
 
+    <color name="white_half">#20ffffff</color>
+    <color name="toolbar_pressed">@color/white_half</color>
+    <color name="toolbar_normal">@color/main_color</color>
 
     <color name="c_6fc740">#6FC740</color>
     <color name="main_color">#4C73CF</color>

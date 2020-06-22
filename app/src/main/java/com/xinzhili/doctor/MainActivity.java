@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.Common
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
@@ -65,6 +67,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initViews() {
+        hideToolbar();
+        disableSwipeLayout();
         initFragmentVp();
     }
 
@@ -161,6 +165,7 @@ public class MainActivity extends BaseActivity {
     }
     @Override
     public void initData() {
+        Window window = getWindow();
         String userId = UserInfoUtils.getUserId(mContext);
         List<RelationshipBean> list = DoctorTableUtils.getInstance().getRelationShipBeanByUserId(userId);
     }

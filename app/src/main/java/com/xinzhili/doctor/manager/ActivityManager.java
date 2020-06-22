@@ -28,9 +28,9 @@ public class ActivityManager  implements Application.ActivityLifecycleCallbacks 
     private ActivityManager(){
     }
 
-private static class ActivityManagerHolder {
-    private static ActivityManager instance = new ActivityManager();
-}
+    private static class ActivityManagerHolder {
+        private static ActivityManager instance = new ActivityManager();
+    }
 
     public static ActivityManager getInstance() {
         return ActivityManagerHolder.instance;

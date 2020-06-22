@@ -115,7 +115,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.IView {
 
     @Override
     public void initData() {
-
+        hideToolbar();
+        disableSwipeLayout();
     }
 
     /**

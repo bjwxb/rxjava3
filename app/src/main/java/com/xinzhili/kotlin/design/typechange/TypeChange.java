@@ -1,6 +1,7 @@
 package com.xinzhili.kotlin.design.typechange;
 
-import com.xinzhili.doctor.App;
+
+import com.blankj.utilcode.util.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class TypeChange {
     public static void main(String[] args) {
         List<Fruit> list = new ArrayList<>();
         List<Orange> oranges = new ArrayList<>();
+        oranges.add(new Orange());
         //list = oranges;//error
         //oranges = list;//error
 
@@ -35,6 +37,8 @@ public class TypeChange {
         //  Orange、Banana甚至Fruit都可以，因此，为了保证类型安全，编译器拒绝任何类型。
         //fruits.add(new Orange());
         Fruit f = fruits.get(0);
+        System.out.println(">>> " +f.getClass());
+
 
         List<? super Fruit> inFruitList = new ArrayList<>();
         //list = inFruitList;//error
@@ -49,9 +53,13 @@ public class TypeChange {
 
         //<? extends Apple>限制了get方法返回的类型必须是Apple及其父类型。
         List<? extends Apple> l1 = new ArrayList<>();
+        List<RedApple> redList = new ArrayList<>();
+        redList.add(new RedApple());
+        l1 = redList;
 
         Apple apple = l1.get(0);
         Fruit fruit = l1.get(0);
+        System.out.println(">>> " +l1.get(0).getClass());
         //RedApple redApple = l1.get(0);//error
 //        l1.add(new Apple());//error
 
