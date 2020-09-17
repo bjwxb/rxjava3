@@ -119,6 +119,18 @@ public class LoginActivity extends BaseActivity implements LoginContract.IView {
         disableSwipeLayout();
     }
 
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        Dlog.e("11111111111111111111");
+    }
+
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        Dlog.e("222222222222222222222222222222");
+    }
+
     /**
      * 检查手机号是否有效
      *

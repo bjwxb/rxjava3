@@ -17,6 +17,11 @@ fun test(b:Int):()->Int{
 }
 
 fun main() {
+    val str by lazy {
+        var s = "Hello world"
+        "呵呵"
+    }
+    println(str)
 
 //    val sum = test(3)
 //    println(sum())
@@ -25,7 +30,7 @@ fun main() {
 
     //引用外部变量，并改变外部变量的值
 //    var ret = 0
-//    var arr = arrayOf(1, 3, 4, 8, 9)
+//    val arr = arrayOf(1, 3, 4, 8, 9)
 //    arr.filter { it < 5 }.forEach { ret += it }
 //    println(ret)
 

@@ -2,13 +2,17 @@ package com.xinzhili.doctor.ui.home.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Process;
 import android.text.TextUtils;
 import android.view.View;
 
 import com.xinzhili.doctor.R;
+import com.xinzhili.doctor.api.ApiService;
 import com.xinzhili.doctor.base.BaseLazyFragment;
 import com.xinzhili.doctor.bean.PatientInfoBean;
+import com.xinzhili.doctor.bean.base.BaseResponse;
 import com.xinzhili.doctor.contract.home.PatientListContract;
+import com.xinzhili.doctor.database.sqlite.entity.DoctorBean;
 import com.xinzhili.doctor.event.OrganChangeEvent;
 import com.xinzhili.doctor.presenter.home.PatientListPresenter;
 import com.xinzhili.doctor.ui.home.adapter.PatientOrganAdapter;
@@ -17,6 +21,7 @@ import com.xinzhili.doctor.util.Dlog;
 import com.xinzhili.doctor.util.SingletonUtil;
 import com.xinzhili.doctor.view.CustomLoadMoreView;
 import com.xinzhili.mvp.common.AppConstant;
+import com.xinzhili.mvp.common.Constant;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -33,6 +38,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * 描述: 患者列表
@@ -171,6 +181,30 @@ public class PatientListFragment extends BaseLazyFragment
     @Override
     public void onRefresh() {
         resetData();
+        test();
+    }
+    private void test(){
+        Dlog.e(">>>>>>>>>>>>>>>>>>. " + Process.myPid());
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constant.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiService service = retrofit.create(ApiService.class);
+
+        Call<BaseResponse<DoctorBean>> call = service.test();
+
+        call.enqueue(new Callback<BaseResponse<DoctorBean>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<DoctorBean>> call, Response<BaseResponse<DoctorBean>> response) {
+                Dlog.e("------------------ " + Process.myPid());
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<DoctorBean>> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override

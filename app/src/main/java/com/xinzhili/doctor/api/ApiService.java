@@ -10,6 +10,7 @@ import com.xinzhili.mvp.common.Constant;
 import java.util.Map;
 
 import io.reactivex.rxjava3.core.Observable;
+import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -33,6 +34,10 @@ public interface ApiService {
     //登录后获取医生相关信息
     @GET(Constant.URL.DOCTOR_USER)
     Observable<BaseResponse<DoctorBean>> getDoctorUser();
+
+    //登录后获取医生相关信息
+    @GET(Constant.URL.DOCTOR_USER)
+    Call<BaseResponse<DoctorBean>> test();
 
     //获取患者列表
     @GET(Constant.URL.DOCTOR_PATIENT_LIST)

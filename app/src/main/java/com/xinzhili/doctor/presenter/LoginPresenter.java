@@ -10,6 +10,7 @@ import com.xinzhili.doctor.contract.LoginContract;
 import com.xinzhili.doctor.database.sp.UserInfoUtils;
 import com.xinzhili.doctor.database.sqlite.entity.DoctorBean;
 import com.xinzhili.doctor.database.sqlite.utils.DoctorTableUtils;
+import com.xinzhili.doctor.util.Dlog;
 
 import java.util.Map;
 
@@ -34,6 +35,7 @@ public class LoginPresenter extends BaseRxPresenter<LoginContract.IView>
 
     @Override
     public void doLogin(Map<String, String> map) {
+        Dlog.e(">>>>>>>>>>>");
         addSubscribe(mApiService.getToken(map)
                 .flatMap(new Function<LoginToken, Observable<BaseResponse<DoctorBean>>>() {
                     @Override

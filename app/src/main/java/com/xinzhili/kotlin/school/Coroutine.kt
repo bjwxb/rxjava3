@@ -1,5 +1,6 @@
 package com.xinzhili.kotlin.school
 
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -13,23 +14,33 @@ import kotlinx.coroutines.runBlocking
 
 fun main(){
     runBlocking {
+//        val job = GlobalScope.launch {
+//            val startTime = System.currentTimeMillis()
+//            repeat(1000000){
+//                println("**")
+//            }
+//            val endTime = System.currentTimeMillis()
+//            println("exec time is ${endTime - startTime}ms")//4s
+//        }
         launch {
             val startTime = System.currentTimeMillis()
             repeat(1000000){
                 println("**")
             }
             val endTime = System.currentTimeMillis()
-            println("exec time is ${endTime - startTime}ms")
+            println("exec time is ${endTime - startTime}ms")//4s
         }
     }
-    val startTime = System.currentTimeMillis()
-    for (i in 1..1000000){
-        Thread(Runnable {
-            run {
-                println("** ${Thread.currentThread()}")
-            }
-        })
-    }
-    val endTime = System.currentTimeMillis()
-    println("exec time is ${endTime - startTime}ms")
+
+    print("0000000000000")
+//    val startTime = System.currentTimeMillis()
+//    for (i in 1..1000000){
+//        Thread(Runnable {
+//            run {
+//                println("** ${Thread.currentThread()}")
+//            }
+//        }).start()
+//    }
+//    val endTime = System.currentTimeMillis()
+//    println("exec time is ${endTime - startTime}ms")//87s
 }

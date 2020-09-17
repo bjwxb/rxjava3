@@ -1,9 +1,12 @@
 package com.xinzhili.doctor.presenter.home;
 
+import android.os.Process;
+
 import com.xinzhili.doctor.base.BaseObserver;
 import com.xinzhili.doctor.base.BaseRxPresenter;
 import com.xinzhili.doctor.bean.PatientInfoBean;
 import com.xinzhili.doctor.contract.home.PatientListContract;
+import com.xinzhili.doctor.util.Dlog;
 
 import java.util.Map;
 
